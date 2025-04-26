@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { AuthButton } from '@/components/auth-button';
 import { Separator } from '@/components/ui/separator'; // Import Separator
 import Link from 'next/link'; // Import Link
-import { Button } from '@/components/ui/button'; // Import Button for link styling
+
 import { LayoutDashboard } from 'lucide-react'; // Import icon
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' }); // Use Inter
@@ -31,13 +31,10 @@ export default async function RootLayout({
                     <Link href="/" className="font-bold text-lg text-primary hover:opacity-80 transition-opacity"> {/* Link to homepage */}
                        UniScope
                     </Link>
-                    <Button variant="ghost" size="sm" asChild>
-                        <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-primary">
-                             <LayoutDashboard className="mr-2 h-4 w-4" />
-                             Dashboard
-                        </Link>
-                    </Button>
+                    
                 </div>
+                
+                
                  {/* AuthButton now contains the dropdown menu */}
                 <AuthButton />
             </div>
