@@ -4,6 +4,7 @@ import { ReviewForm } from '@/components/review-form';
 import { ReviewList } from '@/components/review-list';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { GraduationCap } from 'lucide-react';
+import type { Review } from '@/types/review'; // Import Review type
 
 export default async function Home() {
   // Fetch initial reviews on the server
@@ -29,7 +30,7 @@ export default async function Home() {
        <div className="w-full max-w-4xl space-y-8">
           <header className="text-center space-y-2">
             <GraduationCap className="mx-auto h-12 w-12 text-primary" />
-            <h1 className="text-3xl md:text-4xl font-bold text-primary">UniReview</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-primary">UniScope</h1> {/* Changed from UniReview */}
             <p className="text-muted-foreground">Share and discover university unit reviews.</p>
           </header>
 
@@ -66,6 +67,3 @@ export default async function Home() {
     </main>
   );
 }
-
-// Make sure Review type is imported or defined if not globally available
-import type { Review } from '@/types/review';

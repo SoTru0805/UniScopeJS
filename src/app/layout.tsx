@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google'; // Changed from Geist/Geist_Mono
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { AuthButton } from '@/components/auth-button';
-// Removed Clerk import as Firebase Auth is used
-// import { currentUser } from '@clerk/nextjs/server';
 
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' }); // Use Inter
 
 export const metadata: Metadata = {
-  title: 'UniReview',
+  title: 'UniScope', // Changed from UniReview
   description: 'Review university units',
 };
 
@@ -27,17 +16,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Removed server-side auth check logic that depended on Clerk.
-  // The AuthButton component now determines the auth state client-side.
-
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+      {/* Apply Inter font variable to the body */}
+      <body className={`${inter.variable} font-sans antialiased min-h-screen flex flex-col`}>
          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-14 items-center justify-between px-4 md:px-6">
-                 {/* You might want a logo or site title here */}
-                <span className="font-bold">UniReview</span>
-                {/* Removed isSignedIn prop, AuthButton will manage its state */}
+                <span className="font-bold">UniScope</span> {/* Changed from UniReview */}
                 <AuthButton />
             </div>
         </header>

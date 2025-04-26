@@ -55,7 +55,7 @@ export function SignUpForm({ onSignUp }: SignUpFormProps) {
       await onSignUp({ email: data.email, password: data.password });
       toast({
         title: 'Account Created',
-        description: 'Welcome to UniReview! Please log in.',
+        description: 'Welcome to UniScope! Please log in.', // Changed from UniReview
       });
        // Redirect to login page after successful signup
       router.push('/login');
