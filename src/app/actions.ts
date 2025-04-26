@@ -324,6 +324,7 @@ export async function addUserUnit(userId: string, unitCode: string) {
 }
 
 
+
 /**
  * Removes a unit from the user's list of enrolled units.
  * @param userId - The ID of the authenticated user.
@@ -345,4 +346,6 @@ export async function removeUserUnit(userId: string, unitCode: string) {
         console.error('Error removing user unit:', error);
         throw new Error('Failed to remove unit.');
     }
+
+
 }

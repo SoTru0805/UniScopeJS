@@ -116,11 +116,15 @@ export function AuthButton({}: AuthButtonProps) {
                 <BookMarked className="mr-2 h-4 w-4" />
                 <span>My Units</span>
             </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleNavigate('/dashboard')}>
+                <BookMarked className="mr-2 h-4 w-4" />
+                <span>My Dashboard</span>
+            </DropdownMenuItem>
             {/* Placeholder Items - Add functionality later */}
             {/* <DropdownMenuItem onClick={() => handleNavigate('/my-reviews')} disabled>
                 <Star className="mr-2 h-4 w-4" />
                 <span>My Reviews</span>
-            </DropdownMenuItem>
+            </DropdownMenuItem>/
             <DropdownMenuItem onClick={() => handleNavigate('/subscriptions')} disabled>
                 <List className="mr-2 h-4 w-4" />
                 <span>Subscriptions</span>
