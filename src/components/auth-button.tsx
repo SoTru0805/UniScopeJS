@@ -2,14 +2,22 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { LogIn, LogOut, Loader2, User } from 'lucide-react'; // Added User icon
+import { LogIn, LogOut, Loader2, User, Settings, Star, List } from 'lucide-react'; // Added User, Settings, Star, List icons
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"; // Import Avatar components
 import { useToast } from '@/hooks/use-toast';
 import { signOutUser } from '@/app/actions';
 import { auth } from '@/lib/firebase'; // Import Firebase auth instance
 import { onAuthStateChanged, type User as FirebaseUser } from 'firebase/auth'; // Import onAuthStateChanged
 
-// Removed isSignedIn prop from interface
 interface AuthButtonProps {}
 
 export function AuthButton({}: AuthButtonProps) {
@@ -35,7 +43,6 @@ export function AuthButton({}: AuthButtonProps) {
     try {
       await signOutUser();
       toast({ title: 'Signed Out', description: 'You have been successfully signed out.' });
-      // router.push('/'); // Redirect is handled by state change now potentially
       router.refresh(); // Refresh to reflect the signed-out state across the app
     } catch (error) {
       console.error('Sign out failed:', error);
@@ -49,43 +56,95 @@ export function AuthButton({}: AuthButtonProps) {
     router.push('/login');
   };
 
-   if (isLoading) {
+  const handleNavigate = (path: string) => {
+    router.push(path);
+  };
+
+  // Helper to get initials from email
+  const getInitials = (email?: string | null) => {
+    if (!email) return 'U'; // Default to 'U' for User
+    const parts = email.split('@')[0];
+    const nameParts = parts.split(/[._-]/); // Split by common separators
+    if (nameParts.length > 1) {
+        return (nameParts[0][0] + (nameParts[1][0] || '')).toUpperCase();
+    }
+    return email.substring(0, 2).toUpperCase();
+  };
+
+
+  if (isLoading) {
     // Show a loading state while checking auth status
     return (
-      <Button variant="outline" size="sm" disabled>
-        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-        Loading...
+      <Button variant="ghost" size="icon" disabled className="rounded-full">
+        <Loader2 className="h-5 w-5 animate-spin" />
       </Button>
     );
   }
 
-  if (currentUser) {
-    // User is signed in
-    return (
-      <div className="flex items-center gap-2">
-         {/* Optionally display user info */}
-         {/* <span className="text-sm text-muted-foreground hidden sm:inline">
-           {currentUser.email}
-         </span> */}
-         <Button onClick={handleSignOut} variant="outline" size="sm" disabled={isSigningOut}>
-           {isSigningOut ? (
-             <>
-               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Signing Out...
-             </>
-           ) : (
-             <>
-               <LogOut className="mr-2 h-4 w-4" /> Sign Out
-             </>
-           )}
-         </Button>
-      </div>
-    );
-  }
-
-  // User is signed out
   return (
-    <Button onClick={handleSignIn} variant="outline" size="sm">
-      <LogIn className="mr-2 h-4 w-4" /> Sign In
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="rounded-full">
+           <Avatar className="h-8 w-8">
+            {/* Add AvatarImage if you store profile picture URLs */}
+            {/* <AvatarImage src={currentUser?.photoURL || undefined} alt={currentUser?.displayName || currentUser?.email || 'User'} /> */}
+            <AvatarFallback className="bg-primary/20 text-primary text-xs font-semibold">
+                {currentUser ? getInitials(currentUser.email) : <User className="h-5 w-5" />}
+            </AvatarFallback>
+          </Avatar>
+          <span className="sr-only">User Menu</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        {currentUser ? (
+          <>
+            <DropdownMenuLabel className="font-normal">
+                <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">My Account</p>
+                    <p className="text-xs leading-none text-muted-foreground truncate">
+                    {currentUser.email}
+                    </p>
+                </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+             {/* Placeholder Items - Add functionality later */}
+            {/* <DropdownMenuItem onClick={() => handleNavigate('/my-reviews')} disabled>
+                <Star className="mr-2 h-4 w-4" />
+                <span>My Reviews</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleNavigate('/subscriptions')} disabled>
+                <List className="mr-2 h-4 w-4" />
+                <span>Subscriptions</span>
+            </DropdownMenuItem>
+             <DropdownMenuItem onClick={() => handleNavigate('/settings')} disabled>
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Settings</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator /> */}
+            <DropdownMenuItem onClick={handleSignOut} disabled={isSigningOut}>
+              {isSigningOut ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                  <LogOut className="mr-2 h-4 w-4" />
+              )}
+              <span>Sign Out</span>
+            </DropdownMenuItem>
+          </>
+        ) : (
+          <>
+            <DropdownMenuLabel>Guest</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={handleSignIn}>
+              <LogIn className="mr-2 h-4 w-4" />
+              <span>Sign In</span>
+            </DropdownMenuItem>
+             <DropdownMenuItem onClick={() => handleNavigate('/signup')}>
+                <User className="mr-2 h-4 w-4" />
+                <span>Create Account</span>
+            </DropdownMenuItem>
+          </>
+        )}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

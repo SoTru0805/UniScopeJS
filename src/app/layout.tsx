@@ -37,6 +37,7 @@ export default async function RootLayout({
                         </Link>
                     </Button>
                 </div>
+                 {/* AuthButton now contains the dropdown menu */}
                 <AuthButton />
             </div>
         </header>
