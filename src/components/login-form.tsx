@@ -1,39 +1,29 @@
 'use client';
 
-import * as React from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { useRouter } from 'next/navigation'; // Import useRouter
-
-import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import { Loader2 } from 'lucide-react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '@/app/firebase/config';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
-  password: z.string().min(1, { message: 'Password is required.' }), // Basic check, server handles actual validation
+  password: z.string().min(6, { message: 'Password must be at least 6 characters long.' }),
 });
 
 type LoginFormValues = z.infer<typeof formSchema>;
 
-interface LoginFormProps {
-  onSignIn: (data: LoginFormValues) => Promise<any>;
-}
-
-export function LoginForm({ onSignIn }: LoginFormProps) {
+export function LoginForm() {
   const { toast } = useToast();
-  const router = useRouter(); // Initialize router
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(formSchema),
@@ -46,19 +36,19 @@ export function LoginForm({ onSignIn }: LoginFormProps) {
   const handleFormSubmit = async (data: LoginFormValues) => {
     setIsSubmitting(true);
     try {
-      await onSignIn(data);
-      toast({
-        title: 'Login Successful',
-        description: 'Welcome back!',
-      });
-      // Redirect to homepage after successful login
-      router.push('/');
-      router.refresh(); // Refresh to update auth state potentially shown in layout
-    } catch (error) {
-      console.error('Failed to sign in:', error);
+      const result = await signInWithEmailAndPassword(data.email, data.password);
+      if (result) {
+        toast({
+          title: 'Login Successful',
+          description: 'Welcome back to UniScope!',
+        });
+        router.push('/dashboard'); // Redirect to dashboard after login
+      }
+    } catch (error: any) {
+      console.error('Login failed:', error);
       toast({
         title: 'Login Failed',
-        description: error instanceof Error ? error.message : 'An unknown error occurred.',
+        description: error.message || 'An unknown error occurred.',
         variant: 'destructive',
       });
     } finally {
@@ -68,7 +58,7 @@ export function LoginForm({ onSignIn }: LoginFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-6 p-6 border rounded-lg shadow-sm bg-card">
+      <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="email"
@@ -82,7 +72,6 @@ export function LoginForm({ onSignIn }: LoginFormProps) {
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
           name="password"
@@ -96,16 +85,8 @@ export function LoginForm({ onSignIn }: LoginFormProps) {
             </FormItem>
           )}
         />
-
-        <Button type="submit" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-          {isSubmitting ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Logging in...
-            </>
-          ) : (
-            'Log In'
-          )}
+        <Button type="submit" disabled={isSubmitting || loading} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+          {isSubmitting || loading ? 'Logging in...' : 'Log In'}
         </Button>
       </form>
     </Form>
