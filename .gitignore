@@ -57,3 +57,6 @@ extensions-debug.log*
 # Genkit state files
 .genkit/
 
+# Local Environement
+.env
+

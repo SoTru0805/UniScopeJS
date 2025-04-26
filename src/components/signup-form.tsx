@@ -18,6 +18,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import {useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth";
+import {auth} from "@/app/firebase/config"
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
@@ -49,6 +51,18 @@ export function SignUpForm({ onSignUp }: SignUpFormProps) {
   });
 
   const handleFormSubmit = async (data: SignUpFormValues) => {
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth)
+    const handleSignUp = async (email: string, password: string) =>{
+      try {
+        const res = await createUserWithEmailAndPassword(email, password)
+        if (res) {
+          console.log({res})
+        }
+      } catch (e){
+        console.error(e)
+      }
+    }
+    
     setIsSubmitting(true);
     try {
       // Only pass email and password to the server action
