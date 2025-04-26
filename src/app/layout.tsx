@@ -18,7 +18,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full"> {/* Ensure html takes full height */}
+    // Ensure html takes full height, remove any leading/trailing whitespace around it
+    <html lang="en" className="h-full">
       {/* Apply Inter font variable to the body */}
       <body className={`${inter.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground`}>
          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
