@@ -1,13 +1,15 @@
+
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, Timestamp, doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { z } from 'zod';
 import { db, auth } from '@/lib/firebase'; // Import auth
 import type { Review } from '@/types/review';
-import type { UnitSummary } from '@/types/unit-summary'; // Import UnitSummary type
-import type { Unit } from '@/types/unit'; // Import Unit type
+import type { UnitSummary } from '@/types/unit-summary';
+import type { Unit } from '@/types/unit';
+import type { UserProfile } from '@/types/user'; // Import UserProfile type
 
 // --- Sample Data ---
 const sampleUnits: Unit[] = [
@@ -40,18 +42,29 @@ export async function submitReview(formData: z.infer<typeof reviewSchema>) {
    const { unitCode, rating, reviewText } = validatedData.data;
 
   try {
+    // Add check for user authentication before submitting
+    const user = auth.currentUser;
+    if (!user) {
+        throw new Error('You must be logged in to submit a review.');
+    }
+
     const docRef = await addDoc(collection(db, 'reviews'), {
       unitCode: unitCode.toUpperCase(), // Standardize unit code
       rating,
       reviewText,
       createdAt: serverTimestamp(), // Use server timestamp
+      userId: user.uid, // Associate review with the logged-in user
     });
     console.log('Review submitted with ID: ', docRef.id);
     revalidatePath('/'); // Revalidate the homepage to show the new review
     revalidatePath('/dashboard'); // Revalidate the dashboard page
+    revalidatePath(`/account/my-units`); // Revalidate potentially linked pages
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error('Error adding document: ', error);
+     if (error instanceof Error && error.message.includes('logged in')) {
+        throw error; // Rethrow auth error
+    }
     throw new Error('Failed to submit review to database.'); // Throw specific error
   }
 }
@@ -75,6 +88,7 @@ export async function getReviews(): Promise<Review[]> {
             rating: data.rating,
             reviewText: data.reviewText,
             createdAt: createdAtISO, // Pass ISO string instead of Timestamp
+            userId: data.userId, // Include userId if available
         } as Review;
     });
     return reviewList;
@@ -169,10 +183,23 @@ export async function signUpUser(formData: z.infer<typeof signUpSchema>) {
 
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        console.log('User signed up:', userCredential.user.uid);
+        const userId = userCredential.user.uid;
+        console.log('User signed up:', userId);
+
+        // Create a corresponding user document in Firestore
+        const userRef = doc(db, 'users', userId);
+        await setDoc(userRef, {
+            email: email,
+            createdAt: serverTimestamp(),
+            enrolledUnits: [], // Initialize empty array for units
+        });
+        console.log('User document created in Firestore for:', userId);
+
+
         revalidatePath('/'); // Revalidate relevant paths after sign up
         revalidatePath('/dashboard');
-        return { success: true, userId: userCredential.user.uid };
+        revalidatePath('/account/my-units');
+        return { success: true, userId: userId };
     } catch (error: any) {
         console.error('Error signing up user:', error.code, error.message);
         // Provide more specific error messages based on Firebase error codes
@@ -204,6 +231,7 @@ export async function signInUser(formData: z.infer<typeof signInSchema>) {
         console.log('User signed in:', userCredential.user.uid);
         revalidatePath('/'); // Revalidate relevant paths after sign in
         revalidatePath('/dashboard');
+        revalidatePath('/account/my-units');
         return { success: true, userId: userCredential.user.uid };
     } catch (error: any) {
         console.error('Error signing in user:', error.code, error.message);
@@ -225,9 +253,92 @@ export async function signOutUser() {
         console.log('User signed out');
         revalidatePath('/'); // Revalidate relevant paths after sign out
         revalidatePath('/dashboard');
+        revalidatePath('/account/my-units');
         return { success: true };
     } catch (error: any) {
         console.error('Error signing out user:', error.message);
         throw new Error(`Sign out failed: ${error.message}`);
+    }
+}
+
+
+// --- User Unit Management Actions ---
+
+// Assumes the user is already authenticated when these are called.
+// You might add explicit auth checks within each function if needed,
+// although the UI should ideally prevent unauthenticated access.
+
+/**
+ * Fetches the list of enrolled units for the currently authenticated user.
+ * @param userId - The ID of the authenticated user.
+ * @returns A promise that resolves to an array of unit codes.
+ */
+export async function getUserUnits(userId: string): Promise<string[]> {
+    if (!userId) {
+        throw new Error("User ID is required.");
+    }
+    try {
+        const userRef = doc(db, 'users', userId);
+        const userSnap = await getDoc(userRef);
+
+        if (!userSnap.exists()) {
+        console.warn(`User document not found for userId: ${userId}. Returning empty array.`);
+        // Optionally, create the document here if it should always exist for logged-in users
+        // await setDoc(userRef, { email: auth.currentUser?.email || '', createdAt: serverTimestamp(), enrolledUnits: [] });
+        return [];
+        }
+
+        const userData = userSnap.data() as UserProfile; // Cast to UserProfile
+        return userData.enrolledUnits || []; // Return enrolledUnits or empty array if field is missing
+    } catch (error) {
+        console.error('Error fetching user units:', error);
+        throw new Error('Failed to fetch user units.');
+    }
+}
+
+/**
+ * Adds a unit to the user's list of enrolled units.
+ * @param userId - The ID of the authenticated user.
+ * @param unitCode - The code of the unit to add.
+ */
+export async function addUserUnit(userId: string, unitCode: string) {
+    if (!userId || !unitCode) {
+        throw new Error("User ID and Unit Code are required.");
+    }
+    try {
+        const userRef = doc(db, 'users', userId);
+        await updateDoc(userRef, {
+        enrolledUnits: arrayUnion(unitCode.toUpperCase()) // Add unit code (standardized)
+        });
+        console.log(`Unit ${unitCode} added for user ${userId}`);
+        revalidatePath('/account/my-units'); // Revalidate the page showing the units
+        return { success: true };
+    } catch (error) {
+        console.error('Error adding user unit:', error);
+        throw new Error('Failed to add unit.');
+    }
+}
+
+
+/**
+ * Removes a unit from the user's list of enrolled units.
+ * @param userId - The ID of the authenticated user.
+ * @param unitCode - The code of the unit to remove.
+ */
+export async function removeUserUnit(userId: string, unitCode: string) {
+     if (!userId || !unitCode) {
+        throw new Error("User ID and Unit Code are required.");
+    }
+    try {
+        const userRef = doc(db, 'users', userId);
+        await updateDoc(userRef, {
+            enrolledUnits: arrayRemove(unitCode.toUpperCase()) // Remove unit code (standardized)
+        });
+        console.log(`Unit ${unitCode} removed for user ${userId}`);
+        revalidatePath('/account/my-units'); // Revalidate the page showing the units
+        return { success: true };
+    } catch (error) {
+        console.error('Error removing user unit:', error);
+        throw new Error('Failed to remove unit.');
     }
 }

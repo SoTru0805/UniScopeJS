@@ -1,8 +1,9 @@
+
 'use client';
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { LogIn, LogOut, Loader2, User, Settings, Star, List } from 'lucide-react'; // Added User, Settings, Star, List icons
+import { LogIn, LogOut, Loader2, User, Settings, Star, List, BookMarked } from 'lucide-react'; // Added BookMarked icon
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -43,6 +44,7 @@ export function AuthButton({}: AuthButtonProps) {
     try {
       await signOutUser();
       toast({ title: 'Signed Out', description: 'You have been successfully signed out.' });
+      router.push('/'); // Redirect to homepage after sign out
       router.refresh(); // Refresh to reflect the signed-out state across the app
     } catch (error) {
       console.error('Sign out failed:', error);
@@ -65,8 +67,8 @@ export function AuthButton({}: AuthButtonProps) {
     if (!email) return 'U'; // Default to 'U' for User
     const parts = email.split('@')[0];
     const nameParts = parts.split(/[._-]/); // Split by common separators
-    if (nameParts.length > 1) {
-        return (nameParts[0][0] + (nameParts[1][0] || '')).toUpperCase();
+    if (nameParts.length > 1 && nameParts[0] && nameParts[1]) {
+        return (nameParts[0][0] + nameParts[1][0]).toUpperCase();
     }
     return email.substring(0, 2).toUpperCase();
   };
@@ -107,7 +109,12 @@ export function AuthButton({}: AuthButtonProps) {
                 </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-             {/* Placeholder Items - Add functionality later */}
+             {/* Navigation Items */}
+            <DropdownMenuItem onClick={() => handleNavigate('/account/my-units')}>
+                <BookMarked className="mr-2 h-4 w-4" />
+                <span>My Units</span>
+            </DropdownMenuItem>
+            {/* Placeholder Items - Add functionality later */}
             {/* <DropdownMenuItem onClick={() => handleNavigate('/my-reviews')} disabled>
                 <Star className="mr-2 h-4 w-4" />
                 <span>My Reviews</span>
@@ -119,8 +126,8 @@ export function AuthButton({}: AuthButtonProps) {
              <DropdownMenuItem onClick={() => handleNavigate('/settings')} disabled>
                 <Settings className="mr-2 h-4 w-4" />
                 <span>Settings</span>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator /> */}
+            </DropdownMenuItem> */}
+            <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleSignOut} disabled={isSigningOut}>
               {isSigningOut ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
