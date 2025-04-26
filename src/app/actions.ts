@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 import { z } from 'zod';
 import { db, auth } from '@/lib/firebase'; // Import auth
 import type { Review } from '@/types/review';
+import type { UnitSummary } from '@/types/unit-summary'; // Import UnitSummary type
 
 // --- Review Schemas and Actions ---
 
@@ -37,6 +38,7 @@ export async function submitReview(formData: z.infer<typeof reviewSchema>) {
     });
     console.log('Review submitted with ID: ', docRef.id);
     revalidatePath('/'); // Revalidate the homepage to show the new review
+    revalidatePath('/dashboard'); // Revalidate the dashboard page
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error('Error adding document: ', error);
@@ -74,6 +76,54 @@ export async function getReviews(): Promise<Review[]> {
   }
 }
 
+// --- Unit Data Actions ---
+
+export async function getUnitsWithAverageRatings(): Promise<UnitSummary[]> {
+  try {
+    const reviewsCol = collection(db, 'reviews');
+    const reviewSnapshot = await getDocs(reviewsCol);
+
+    if (reviewSnapshot.empty) {
+      return [];
+    }
+
+    const unitRatings: Record<string, { totalRating: number; count: number }> = {};
+
+    // Aggregate ratings per unit code
+    reviewSnapshot.docs.forEach(doc => {
+      const data = doc.data();
+      const unitCode = data.unitCode as string;
+      const rating = data.rating as number;
+
+      if (unitCode && typeof rating === 'number') {
+        if (!unitRatings[unitCode]) {
+          unitRatings[unitCode] = { totalRating: 0, count: 0 };
+        }
+        unitRatings[unitCode].totalRating += rating;
+        unitRatings[unitCode].count += 1;
+      }
+    });
+
+    // Calculate average and format output
+    const unitsSummary: UnitSummary[] = Object.entries(unitRatings).map(([unitCode, data]) => ({
+      unitCode,
+      averageRating: data.count > 0 ? parseFloat((data.totalRating / data.count).toFixed(1)) : 0,
+      reviewCount: data.count,
+    }));
+
+    // Sort units alphabetically by code
+    unitsSummary.sort((a, b) => a.unitCode.localeCompare(b.unitCode));
+
+    return unitsSummary;
+  } catch (error) {
+    console.error('Error fetching unit summaries: ', error);
+    // In a real app, you might want to log this error and return an empty array
+    // or throw a custom error to be handled by an error boundary.
+    return [];
+  }
+}
+
+
 
 // --- Authentication Schemas and Actions ---
 
@@ -103,6 +153,7 @@ export async function signUpUser(formData: z.infer<typeof signUpSchema>) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         console.log('User signed up:', userCredential.user.uid);
         revalidatePath('/'); // Revalidate relevant paths after sign up
+        revalidatePath('/dashboard');
         return { success: true, userId: userCredential.user.uid };
     } catch (error: any) {
         console.error('Error signing up user:', error.code, error.message);
@@ -111,6 +162,9 @@ export async function signUpUser(formData: z.infer<typeof signUpSchema>) {
             throw new Error('This email address is already in use.');
         } else if (error.code === 'auth/weak-password') {
              throw new Error('The password is too weak.');
+        } else if (error.code === 'auth/invalid-api-key') {
+             console.error("Firebase API Key is invalid. Check your .env file and Firebase project settings.");
+             throw new Error('Server configuration error. Please try again later.');
         }
         throw new Error(`Sign up failed: ${error.message}`);
     }
@@ -131,12 +185,16 @@ export async function signInUser(formData: z.infer<typeof signInSchema>) {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log('User signed in:', userCredential.user.uid);
         revalidatePath('/'); // Revalidate relevant paths after sign in
+        revalidatePath('/dashboard');
         return { success: true, userId: userCredential.user.uid };
     } catch (error: any) {
         console.error('Error signing in user:', error.code, error.message);
          // Provide more specific error messages
          if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
             throw new Error('Invalid email or password.');
+        } else if (error.code === 'auth/invalid-api-key') {
+             console.error("Firebase API Key is invalid. Check your .env file and Firebase project settings.");
+             throw new Error('Server configuration error. Please try again later.');
         }
         throw new Error(`Sign in failed: ${error.message}`);
     }
@@ -148,6 +206,7 @@ export async function signOutUser() {
         await signOut(auth);
         console.log('User signed out');
         revalidatePath('/'); // Revalidate relevant paths after sign out
+        revalidatePath('/dashboard');
         return { success: true };
     } catch (error: any) {
         console.error('Error signing out user:', error.message);
