@@ -7,6 +7,9 @@ import { getReviews } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Review } from "@/types/review";
+import unitInfo from "../../../data/unit_info.json";
+
+
 
 interface UnitDetailPageProps {
   params: {
@@ -48,6 +51,21 @@ export default function UnitDetailPage({ params }: UnitDetailPageProps) {
   
     fetchUnitInfo();
   }, [unitCode]);
+
+  function getUnitDetails(unitCode: string) {
+    const unit = unitInfo.find((u) => u.unit_code === unitCode);
+    return unit
+      ? {
+          name: unit.unit_title,
+          description: unit.description.replace(/<\/?p>/g, ""), // Remove <p> tags for cleaner text
+          averageScore: parseFloat(unit.score),
+        }
+      : {
+          name: unitCode,
+          description: "No description available.",
+          averageScore: 0,
+        };
+  }
   
 
   return (

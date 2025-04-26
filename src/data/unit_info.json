@@ -1,0 +1,740 @@
+[
+    {
+        "unit_code": "FIT1006",
+        "unit_title": "Business information analysis",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit is designed to give you an introduction to statistical and quantitative methods within a business-related framework and to provide you with a sound foundation for more advanced statistical and quantitative studies. The unit will provide opportunities for you to gain skills in the presentation of business and economic data, the use of frequency distributions, measures of central tendency and dispersion, principles of probability, use of probability distributions, sampling theory, estimation, hypothesis testing, regression analysis, the use of indices and forecasting methods.</p>",
+        "score": "5.4",
+        "total_count": "58"
+    },
+    {
+        "unit_code": "FIT1008",
+        "unit_title": "Fundamentals of algorithms",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces you to core problem-solving, analytical skills, and methodologies useful for developing flexible, robust, and maintainable software. In doing this, it covers a range of conceptual levels, from fundamental algorithms and data structures, down to their efficient implementation as well as complexity. Topics include data types, data structures, algorithms, algorithmic complexity, recursion, and their practical applications.</p>",
+        "score": "6.47",
+        "total_count": "91"
+    },
+    {
+        "unit_code": "FIT1033",
+        "unit_title": "Foundations of 3D",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit is an introduction to the techniques, frameworks and processes comprising 3D modelling and 3D imaging. Foundations of 3D aims to give you an understanding of 3D modelling by developing skills in 3D model creation for a variety of contexts, including 3D prototyping, 3D visualisation and 3D modelling for games and animation. You will communicate their knowledge of 3D theory through the production of designs that demonstrate geometrical modelling, texture mapping, virtual lighting techniques, camera positioning, and rendering procedures.</p>",
+        "score": "8.11",
+        "total_count": "95"
+    },
+    {
+        "unit_code": "FIT1043",
+        "unit_title": "Introduction to data science",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit looks at processes and case studies to understand the many facets of working with data, and the significant effort in Data Science over and above the core task of Data Analysis. Working with data as part of a business model and the lifecycle in an organisation is considered, as well as business processes and case studies. Data and its handling is also introduced: characteristic kinds of data and its collection, data storage and basic kinds of data preparation, data cleaning and data stream processing. Curation and management are reviewed: archival and architectural practice, policy, legal and ethical issues. Styles of data analysis and outcomes of successful data exploration and analysis are reviewed. Standards, tools and resources are also reviewed.</p>",
+        "score": "7.7",
+        "total_count": "110"
+    },
+    {
+        "unit_code": "FIT1045",
+        "unit_title": "Introduction to programming",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces programming fundamentals using the Python language. It will present fundamental programming control structures, built-in and complex datatypes, mechanisms for modularity, and the use of basic libraries. You will also be introduced to good programming practices and programming in teams.</p>",
+        "score": "7.37",
+        "total_count": "582"
+    },
+    {
+        "unit_code": "FIT1047",
+        "unit_title": "Introduction to computer systems, networks and security",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>The unit introduces you to fundamentals of computer systems, networks and security. It provides basic knowledge of computer organisation and architecture, operating systems, networking architecture, technology and operation. It introduces the concepts of security goals for protecting common modern computer systems and communication networks from adversaries and the deployment of suitable countermeasures to achieve these goals.</p>",
+        "score": "6.28",
+        "total_count": "167"
+    },
+    {
+        "unit_code": "FIT1049",
+        "unit_title": "IT professional practice",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides a practical and theoretical introduction to what it means to be an IT professional, or a professional with IT expertise today. You will encounter a range of issues relevant to professional practice in the workplace, as well as an understanding of the wider responsibilities that professionals are called upon to uphold in society as they apply their IT expertise. Topics addressed include: the nature of IT as professional expertise; professional communications; situational management; teamwork in professional and organisational settings; problem solving and decision making; applications of professional ethics and relevant legal frameworks. Skills and knowledge will be developed and applied through a range of collaborative, individual and reflective tasks in relevant communication modes and formats.</p>",
+        "score": "5.7",
+        "total_count": "111"
+    },
+    {
+        "unit_code": "FIT1050",
+        "unit_title": "Web fundamentals",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>The world-wide web is one of the most widely-used platforms for building applications. Although all students can be assumed to be experienced users of the web, very few have any clear understanding of the technologies upon which the web is based, and the way in which these technologies affect web-based applications. This unit aims to give you a sound basic knowledge of the web and a range of issues which may be involved in web application development. It will take a strongly practical focus in examining the technology, design and implementation problems a developer needs to address in developing applications for real-world systems. The diversity of web applications means that there are a wide range of issues which may be relevant to the development of any given web site. The unit will aim to give breadth of coverage of these issues, rather than focusing in depth on any particular development task or any specific type of web application.</p>\n<p>The unit will take a strongly practical focus in examining the technology issues involved, and highlight the key issues which a developer needs to address in developing applications of this kind for real-world systems.</p>",
+        "score": "7.34",
+        "total_count": "173"
+    },
+    {
+        "unit_code": "FIT1054",
+        "unit_title": "Fundamentals of algorithms (Advanced)",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces students to core problem-solving, analytical skills, and methodologies useful for developing flexible, robust, and maintainable software. In doing this, it covers a range of conceptual levels, from fundamental algorithms and data structures, down to their efficient implementation as well as complexity. Topics include data types, data structures, algorithms, algorithmic complexity, recursion, and their practical applications.</p>",
+        "score": "8.1",
+        "total_count": "26"
+    },
+    {
+        "unit_code": "FIT1056",
+        "unit_title": "Introduction to software engineering",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Embark on an exciting journey into software engineering with this unit, tailored explicitly for first-year undergraduate students from diverse engineering backgrounds. We aim to provide you with a solid understanding of essential software engineering concepts, methodologies, and practices while introducing you to programming. Throughout this unit, you will explore the crucial role that software engineering plays in solving real-world problems and delve into the ethical considerations involved in the development process. You will be introduced to various software development methodologies such as Waterfall, Agile, and Scrum and examine the intricacies of the software development life cycle (SDLC). You will learn an industry-standard software programming language and how to work effectively in a diverse software development team. You'll learn how to apply human-centric software engineering best practices to develop systems that work for humans.</p>\n<p>No prior programming or software engineering experience is required for this course. It is designed to serve as an ideal starting point for students interested in exploring the field of software engineering and considering a future in software engineering or related disciplines.</p>",
+        "score": "6.55",
+        "total_count": "80"
+    },
+    {
+        "unit_code": "FIT1057",
+        "unit_title": "Introduction to cybersecurity",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This course provides an introductory overview of cybersecurity, covering fundamental concepts, principles, and practices. You will explore the cyber environment, understand cyber risks, examine cyber policy, and examine the ethics around implementing policy to detect, prevent, and deter cyber threats.</p>",
+        "score": "8.04",
+        "total_count": "165"
+    },
+    {
+        "unit_code": "FIT1073",
+        "unit_title": "Game design",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides a foundation in the theoretical and practical principles of game design and game narrative structures in the games development process. Utilising the principles taught in this unit, you will be given the opportunity to design innovative game applications and implement the consequences of your decisions as working paper based game prototypes.</p>\n<p>The combination of theory and practice in this unit is geared to equip you with the skills to not only design innovative games, but also to critique existing games and importantly new game ideas. The studio environment will facilitate considerable peer interaction, in particular in the design, communication, and critique of new game ideas. The unit provides knowledge and skills, which you can apply within game development projects across subsequent units within the Games and Immersive Media major.</p>",
+        "score": "8.12",
+        "total_count": "59"
+    },
+    {
+        "unit_code": "FIT1093",
+        "unit_title": "Cybersecurity tools and techniques",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will provide you with an introduction to fundamental tools and techniques for designing secure systems. You will learn how common cryptographic encryption and authentication algorithms work, their limitations and common pitfalls, and how to apply them to protect against confidentiality and integrity threats. You will learn how to apply and evaluate techniques for user authentication and access control to protect systems against unauthorised access. You will further learn about common security vulnerabilities in software systems, how attackers can exploit such vulnerabilities, and how software vulnerabilities can be identified\u00a0and protected against. Additionally, you will be required to analyse and assess recent developments and future trends in cyber security technologies.</p>",
+        "score": "5.12",
+        "total_count": "76"
+    },
+    {
+        "unit_code": "FIT2001",
+        "unit_title": "Systems development",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>The unit introduces you to systems analysis and design as a problem solving activity, within the framework of a selected methodology. It will focus on contemporary industry practice; investigating understanding and documenting system requirements; a range of design and implementation activities; and professional skills required for systems development.</p>",
+        "score": "7.15",
+        "total_count": "128"
+    },
+    {
+        "unit_code": "FIT2002",
+        "unit_title": "IT project management",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces you to the many concepts, tools and techniques for managing information technology projects. Exploring traditional and agile approaches for managing projects, topics include project lifecycles, project planning, project scheduling, team building, risk management, time and quality management. A case study approach will be used to provide learning opportunities, with an emphasis on the unique aspects of information technology projects.</p>",
+        "score": "5.83",
+        "total_count": "206"
+    },
+    {
+        "unit_code": "FIT2004",
+        "unit_title": "Algorithms and data structures",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces you to problem solving concepts and techniques fundamental to the science of programming. In doing this it covers problem specification, algorithmic design, analysis and implementation. Detailed topics include analysis of best, average and worst-case time and space complexity; introduction to numerical algorithms; recursion; advanced data structures such as heaps and B-trees; hashing; sorting algorithms; searching algorithms; graph algorithms; and numerical computing.</p>",
+        "score": "5.76",
+        "total_count": "128"
+    },
+    {
+        "unit_code": "FIT2014",
+        "unit_title": "Theory of computation",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces formal languages, models of computation, and computational complexity. It looks at what computers can and cannot compute. Topics include finite state automata, regular expressions, grammars, pushdown automata, computable functions, Turing machines, polynomial-time reductions, complexity classes P and NP, and NP-completeness. Skills at writing formal proofs will be developed.</p>",
+        "score": "8.25",
+        "total_count": "195"
+    },
+    {
+        "unit_code": "FIT2081",
+        "unit_title": "Mobile application development",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces an industrial strength programming language (with supporting software technologies and standards) and object-oriented application development in the context of mobile application development for smartphones and tablets. The approach is strictly application driven. You will learn the syntax and semantics of the chosen language and its supporting technologies and standards and object oriented design and coding techniques by analysing a sequence of carefully graded, finished applications. You will also design and build your own applications.</p>",
+        "score": "8.06",
+        "total_count": "192"
+    },
+    {
+        "unit_code": "FIT2082",
+        "unit_title": "Computer science research project",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit builds upon FIT2083 and allows you to conduct an independent research project. You will be assigned to one of the Faculty of Information Technology's research groups, an academic supervisor and a research topic. You may work on your project individually or in groups, as determined by your supervisor. During the semester, you will be required to participate in research group events including seminars and presentations.</p>",
+        "score": "8.5",
+        "total_count": "5"
+    },
+    {
+        "unit_code": "FIT2083",
+        "unit_title": "Innovation and research in computer science",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit equips you to be effective innovators and researchers in Computer Science. It introduces you to the issues, concepts, methods and techniques associated with IT research in general, but focuses on those most commonly used for research in Computer Science. It introduces you to professional practice and research ethics, the principles of research design, research methods and techniques of data collection and analysis appropriate to Computer Science. It covers oral and written communication skills.</p>\n<p>Skills developed and knowledge acquired from this unit will prepare you to conduct and to communicate your own research, as well as to be knowledgeable consumers of others' research.</p>",
+        "score": "5.69",
+        "total_count": "8"
+    },
+    {
+        "unit_code": "FIT2085",
+        "unit_title": "Fundamentals of algorithms for engineers",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces you to core problem-solving, analytical skills, and methodologies useful for developing flexible, robust, and maintainable software. In doing this, it covers a range of conceptual levels, from fundamental algorithms and data structures, down to their efficient implementation as well as complexity. Topics include data types, data structures, algorithms, algorithmic complexity, recursion, and their practical applications.</p>",
+        "score": "6.43",
+        "total_count": "42"
+    },
+    {
+        "unit_code": "FIT2086",
+        "unit_title": "Modelling for data analysis",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit explores the statistical modelling foundations that underlie the analytic aspects of Data Science. It covers:</p>\n<ul>\n<li>Data: collection and sampling, data quality.</li>\n<li>Analytic tasks: statistical hypothesis testing, exploratory and confirmatory analysis.</li>\n<li>Probability distributions: dependence and independence, multivariate Gaussian, Poisson, Dirichlet, random number generation and simulation of distributions, simulation of samples (bootstrap).</li>\n<li>Predictive models: linear and logistic regression, and Bayesian classification.</li>\n<li>Estimation: parameter and function estimation, maximum likelihood and minimum cost estimators, Monte Carlo estimators, inverse probabilities and Bayes theorem, bias versus variance and sample size effects, cross validation, estimation of model performance.</li>\n</ul>",
+        "score": "7.69",
+        "total_count": "100"
+    },
+    {
+        "unit_code": "FIT2090",
+        "unit_title": "Business information systems and processes",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Globalisation and increasing customer demands are challenges facing companies today. To remain competitive and effective in their offerings, companies cannot afford to harbour inefficiencies in their operations. A business process oriented approach is key to the success of modern organisations. A well-designed process will improve efficiency and deliver greater productivity. At the same time, business processes must be designed to ensure that they are effective and meet customer requirements. The internal processes of a business organisation are described with an emphasis on how they work together to achieve the goals of the organisation. A range of process modelling tools is presented in the unit.</p>\n<p>Upon completion of this unit students should be able to: describe business processes in organisations, their structure and they fit into the overall organisation objectives; recommend a process modelling tool for modelling and analysing business processes with the aim of increasing efficiencies and effectiveness for businesses; analyse factors for managing in-house development or software outsourcing; discuss ethical issues related to the management and use of business information systems.</p>",
+        "score": "7.18",
+        "total_count": "65"
+    },
+    {
+        "unit_code": "FIT2093",
+        "unit_title": "Cybersecurity tools and techniques",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will provide you with an introduction to fundamental tools and techniques for designing secure systems. You will learn how common cryptographic encryption and authentication algorithms work, their limitations and common pitfalls, and how to apply them to protect against confidentiality and integrity threats. You will learn how to apply and evaluate techniques for user authentication and access control to protect systems against unauthorised access. You will further learn about common security vulnerabilities in software systems, how attackers can exploit such vulnerabilities, and how software vulnerabilities can be identified and protected against. Additionally, you will be required to analyse and assess recent developments and future trends in cyber security technologies</p>",
+        "score": "5.59",
+        "total_count": "85"
+    },
+    {
+        "unit_code": "FIT2094",
+        "unit_title": "Databases",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will provide an introduction to the concepts of database design and usage and the related issues of data management. You will develop skills in planning, designing, and implementing a data model using an enterprise-scale relational database system (Oracle). Methods and techniques will also be presented to populate, retrieve, update and implement integrity features on data in the implemented database system.</p>",
+        "score": "7.01",
+        "total_count": "123"
+    },
+    {
+        "unit_code": "FIT2095",
+        "unit_title": "Full stack development",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Non-B2B e-Business applications are now mostly developed for Web and mobile platforms. With the advent of mobile Web apps a set of technologies and techniques has emerged that are shared by both Web and mobile application development. This unit introduces, explains and uses these technologies and techniques to build basic but industrial strength e-Business applications. The topics covered will be selected from the following: an overview of the current state-of-play in e-Business application development, HTML5 (the living standard), CSS3, object oriented JavaScript for large developments, JavaScript APIs, Ajax, JSON, XML and related W3C technologies, jQuery, jQuery Mobile, MVC, ASP.NET MVC, ECMAScript 2015 and beyond, Angular, TypeScript, React. The appropriateness of the selected technologies in different contexts, together with relevant best practice techniques for their use and integration will also be covered.</p>",
+        "score": "7.32",
+        "total_count": "103"
+    },
+    {
+        "unit_code": "FIT2096",
+        "unit_title": "Games programming ",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Programming for games requires a strong understanding of how various components of a game engine work and how game mechanics can be constructed using these systems. This unit introduces you to fundamental game programming principles using an object-oriented approach in the C++ language. Programming knowledge is expected coming into the unit, however this does not have to be C++.</p>\n<p>A number of techniques will be covered, including the core game program loop, game physics, artificial intelligence agents, 3D rendering and dynamic user interfaces. Underpinning this will be the use of fundamental mathematical principles for working with computer graphics and game interactions.</p>",
+        "score": "8.84",
+        "total_count": "87"
+    },
+    {
+        "unit_code": "FIT2098",
+        "unit_title": "Virtual and augmented reality",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit explores the fundamental aspects of Virtual Reality (VR) and Augmented Reality (AR) technologies, covering theoretical foundations and practical development skills. You will learn about the evolution of VR/AR within Human-Computer Interaction, understand how human perception influences immersive experiences, use state-of-the-art hardware and software technology, and apply design principles to create innovative VR/AR applications through hands-on development projects</p>",
+        "score": "8.12",
+        "total_count": "36"
+    },
+    {
+        "unit_code": "FIT2099",
+        "unit_title": "Object oriented design and implementation",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces you to object-oriented design principles and their application to the construction of quality software. You will learn the fundamental concepts that underlie modern object-oriented languages, and will learn how to implement your designs using at least one. You will also learn how to use standard notation to illustrate your designs.</p>",
+        "score": "8.16",
+        "total_count": "109"
+    },
+    {
+        "unit_code": "FIT2100",
+        "unit_title": "Operating systems",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will provide students with the knowledge of how a multi-programming, multi-user operating systems operates and it manages and allocate resources to different applications. Students will be able to compare and contrast various resource management allocation strategies. Students will develop and implement code to understand and make use of operating system services.</p>\n<p>The topics covered will include an introduction to C Programming which is heavily used in development of operating systems, operating system structure and services, multi-programming processes, CPU scheduling, memory management, device management, synchronisation, deadlocks, virtual memory and file systems.</p>",
+        "score": "7.23",
+        "total_count": "124"
+    },
+    {
+        "unit_code": "FIT2101",
+        "unit_title": "Software engineering process and management",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>A disciplined process is vital to the success of any major software development project. In this unit, you will learn essential skills for managing software development efforts and for working within coordinated teams. You will learn how to decide upon and document your team's structure and process model. Your team will be expected to follow the process model they have documented, and to evaluate its effectiveness.</p>\n<p>There are many factors that can potentially cause a software project to fail. This unit will equip you with techniques to identify and manage these risks, including ethical considerations, and will take a risk-focused approach to project organisation.</p>",
+        "score": "6.16",
+        "total_count": "125"
+    },
+    {
+        "unit_code": "FIT2102",
+        "unit_title": "Programming paradigms",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Ability to code in differently constructed programming languages is analogous to speaking in different natural languages with varying grammars. Similar to natural languages, programming languages from different paradigms (styles) vary in their expressiveness and efficiency. One programming language may require many screens-full of complex code to accomplish a task for which another requires but a few expressive lines of code. Therefore, understanding the design principles of programming languages enables computational problems to be implemented in dramatically different and powerful ways; leading, in some cases, to solutions that are more elegant, correct, maintainable, efficient and/or extensible.</p>\n<p>This unit examines a selection of programming languages and paradigms and explores the evolution of language design from low-level paradigms that are closer to the execution model of the machine, to more high-level declarative paradigms that allow programmers to model a problem precisely rather than specify its solution. The unit covers paradigms such as functional and declarative programming styles, comparing and contrasting them to programming styles that you are already familiar with, including object-oriented, imperative and procedural programming paradigms. We compare type systems supported by various languages, from scripting languages like JavaScript with weak type systems, to gradual typing as in TypeScript, to advanced compiled languages with strong type correctness, such as Haskell. We see these applied to data-modeling techniques (covering polymorphism, mutability-versus-purity, state management, and side-effects) and different models of execution such as strict-versus-lazy evaluation.</p>\n<p>The unit provides practical experience with using modern functional programming techniques, non-procedural, non-object-oriented programming languages and discusses the influence of programming language theory on the design of current main-stream computer languages, and how the theory translates to practice. A focus of the unit is that these techniques are applicable and ubiquitous in a variety of modern languages, for example, we will see how functional programming techniques are used in relatively conventional imperative languages like JavaScript, and compare and contrast this with pure functional languages, such as Haskell.</p>",
+        "score": "7.85",
+        "total_count": "115"
+    },
+    {
+        "unit_code": "FIT2104",
+        "unit_title": "Web database interface",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides students with the knowledge, understanding and skills required to analyse a business problems and develop a solution that uses a web interface to a back-end database. The unit assumes a sound basic knowledge of programming and database concepts and skills as developed in the introductory units in these areas. The emphasis in the unit is on mastery of the key concepts and the basic knowledge and skills required to build this kind of application. The unit will provide students with an awareness of the wide range of technologies that are used to support this kind of application, but will examine only a limited number of these technologies to demonstrate the key concepts and their application.</p>\n<p>The unit will take a strongly practical focus in examining the technology issues involved, and highlight the key issues which a developer needs to address in developing applications of this kind for real-world systems.</p>",
+        "score": "7.43",
+        "total_count": "56"
+    },
+    {
+        "unit_code": "FIT2107",
+        "unit_title": "Software quality and testing",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit focuses on modern software quality assurance and testing tools and techniques to assure the quality of software systems. Students will learn different quality aspects of quality attributes, e.g., reliability, human, and security. Students will design test cases and apply systematic testing techniques in the context of individual modules and entire systems, using appropriate tools and techniques to automate the testing process where possible. Finally, students will analyze and report code quality issues using modern code review practices with tools and measures.</p>",
+        "score": "6.88",
+        "total_count": "60"
+    },
+    {
+        "unit_code": "FIT2108",
+        "unit_title": "Industry based learning seminar",
+        "study_level": "Undergraduate",
+        "credit_points": "0",
+        "description": "<p>This undergraduate seminar unit is compulsory for undergraduate students who have been selected for the Industry Based Learning Program in the Faculty of Information Technology. It is a non-weighted unit and is taken in addition to any prescribed coursework.</p>\n<p>The seminars are presented by the industry partners of the IBL program and are intended to provide the students with useful knowledge of current industry practise in IT. This seminar series should be attended prior to the commencement of an IBL placement.</p>",
+        "score": "7.92",
+        "total_count": "49"
+    },
+    {
+        "unit_code": "FIT2145",
+        "unit_title": "Game prototyping",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit exposes you to a variety of industry-standard game development environments and development techniques. You will develop an appreciation and basic working knowledge of a number of different platforms used in contemporary games development. The unit aims to provide you with a practical insight into contemporary, industry-standard, games development process and game development environments. The studio environment will facilitate considerable peer interaction, in particular in the critique of game designs and the development of game prototypes. The unit provides knowledge and skills that you can apply within your game development projects in the third year studio project/s (FIT3039/FIT3040) and across all subsequent units.</p>",
+        "score": "8.54",
+        "total_count": "34"
+    },
+    {
+        "unit_code": "FIT2169",
+        "unit_title": "Immersive environments",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces you to immersive environment design and production using game engine prototyping software. Building upon the 3D modelling and texturing skills from the prerequisite unit Foundations of 3D, you will learn how to deploy models to make expansive game worlds. You will augment your creations with an immersive soundscape and convey narratives through simple interactions. Upon completion of this unit, you will have designed and produced several interactive game-level prototypes inspired by a variety of historical and contemporary sources.</p>",
+        "score": "8.72",
+        "total_count": "34"
+    },
+    {
+        "unit_code": "FIT3003",
+        "unit_title": "Business intelligence and data warehousing",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Automation and the use of technological tools have resulted in the accumulation of vast volumes of data by modern business organisations. Data warehouses have been set up as repositories to store this data and improved techniques now result in the speedy collection and integration of such data. OLAP technology has resulted in the faster generation of reports and more flexible analysis based on the data repositories. This unit will explore the concepts of data warehousing and OLAP, covering the data processing technological requirements for data warehousing and OLAP and will provide hands on experience on designing data warehousing and OLAP systems.</p>",
+        "score": "6.73",
+        "total_count": "39"
+    },
+    {
+        "unit_code": "FIT3031",
+        "unit_title": "Network security",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will provide you with an understanding of: OSI security architecture; common information risks and requirements; operation of encryption techniques; digital signatures; public key infrastructure; authentication and non-repudiation; intrusion detection and response; firewall defence; privacy and ethics issues; security configurations to PC-based applications; and design of information systems with security compliance and security standards and protocols.</p>",
+        "score": "5.59",
+        "total_count": "35"
+    },
+    {
+        "unit_code": "FIT3039",
+        "unit_title": "Studio project 1",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>The principal development process focus of the unit will be on the social, legal and business context in which multimedia and games development companies must operate. You will work actively in teams on the development of a multimedia or games application or exhibit. Project teams will use project planning/management skills, and design and build a prototype of the project using appropriate software processes and methodologies. You will integrate multimedia, programming and technical knowledge in the development process. Requirements are fulfilled by the team producing an identified set of deliverables. The team must ensure that each deliverable is completed on schedule.</p>",
+        "score": "10.0",
+        "total_count": "3"
+    },
+    {
+        "unit_code": "FIT3040",
+        "unit_title": "Studio project 2",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>You will work actively in teams on the development of a multimedia or games application or exhibit. Using project planning/management skills along with other development procedures, you must then deliver a functional multimedia system or game, along with all requisite documentation, which integrates multimedia, programming, and technical knowledge in the development process. Requirements are fulfilled by the team producing an identified set of deliverables, usually a progress report, full system documentation, and functional project. The team must ensure that each deliverable is completed on schedule, with each member of the team demonstrating a significant contribution to the overall effort.</p>",
+        "score": "7.56",
+        "total_count": "8"
+    },
+    {
+        "unit_code": "FIT3045",
+        "unit_title": "Industry-based learning",
+        "study_level": "Undergraduate",
+        "credit_points": "18",
+        "description": "<p>Students on placement participate full time in a defined, graduate level role during a 22-week placement period at established partners of the Faculty of IT industry based learning program including major global companies, leading Australian companies and worldwide consultancies. The students on placement apply the knowledge, skills and practices of professional attitudes and behaviour developed in their academic units. They develop communication, time management, self-reflection and customer service skills in business situations, experience and participate professionally in the corporate environment and obtain feedback from experienced supervisors on their performance.</p>",
+        "score": "6.33",
+        "total_count": "9"
+    },
+    {
+        "unit_code": "FIT3047",
+        "unit_title": "Industry experience studio project 1",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>In your final year of study, you are given the opportunity to develop new skills and apply the knowledge and skills you have gained, in the development of an IT application for a real world client. In teams, you design, develop and deliver an IT applications for a client, manage the project through all its development stages, communicate effectively with all project stakeholders and develop project documentation to a professional standard. You also present your project work to academics and other groups, attend unit seminars, and contribute in a professional and committed manner to the work of their team.</p>\n<p>FIT3047 is the first of two industry experience units for most majors in the Bachelor of Information Technology. After successful completion of this unit, you must enrol in and pass FIT3048 to complete your industry experience project requirements.\u00a0</p>",
+        "score": "6.1",
+        "total_count": "186"
+    },
+    {
+        "unit_code": "FIT3048",
+        "unit_title": "Industry experience studio project 2",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>In their final year of study, you are given the opportunity to develop new skills and apply the knowledge and skills they have gained, in the development of an IT application for a real world client. In teams, students design, develop and deliver an IT applications for a client, manage the project through all its development stages, communicate effectively with all project stakeholders and develop project documentation to a professional standard. You also present your project work to academics and other groups, attend unit seminars, and contribute in a professional and committed manner to the work of their team.</p>\n<p>FIT3048 is the second of two industry experience units for most majors in the Bachelor of Information Technology. You must enrol in and pass FIT3048 after successful completion of FIT3047 to complete your industry experience project requirements.</p>",
+        "score": "7.21",
+        "total_count": "49"
+    },
+    {
+        "unit_code": "FIT3077",
+        "unit_title": "Software engineering: Architecture and design",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit builds on introductory units to analysis and design. It provides the professional software engineer with advanced knowledge and skills in high-level architectural design, its theoretical foundations, industrial best practice, and relevant application context. In the software life-cycle, software architecture sits between analysis/specification and design/implementation. The field of software architecture has come of age with a thriving research community and numerous high-level models, methods, tools and practices widely used in industry.</p>",
+        "score": "2.62",
+        "total_count": "64"
+    },
+    {
+        "unit_code": "FIT3080",
+        "unit_title": "Artificial intelligence",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit covers the history of artificial intelligence and the foundational concepts of intelligent agents. It delves into problem-solving and search techniques, including problem representation, heuristic search, and adversarial search. You will learn about knowledge representation and reasoning, focusing on propositional and first-order logic for AI applications, as well as planning. The unit also explores reasoning under uncertainty through Bayesian Networks and Markov Decision Processes. In the realm of machine learning, the unit includes reinforcement learning techniques, supervised learning such as decision trees, Naive Bayes, neural networks, and self-supervised learning approaches. Additionally, the unit addresses various AI applications and examines ethical considerations in AI</p>",
+        "score": "8.59",
+        "total_count": "34"
+    },
+    {
+        "unit_code": "FIT3097",
+        "unit_title": "Technical art",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Technical artists bridge the gap between creative, programming and engineer teams in game development. This unit introduces you to the core principles of technical artistry, including shader technology, pre and post processing, visual effects, and tools creation. Using professional software and techniques, you will be given the opportunity to workshop and design unique digital entertainment experiences.</p>",
+        "score": "7.92",
+        "total_count": "13"
+    },
+    {
+        "unit_code": "FIT3138",
+        "unit_title": "Real time enterprise systems",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides both a theoretical and practical overview of real time enterprise systems. Real time enterprise systems are configurable information systems packages, implemented on-line that integrate people, technology and information processing. The three integrated processes within and across functional areas are seamlessly interconnected and almost time-lag free in an organisation. Topics include systems and technology background, ES evolution, ES lifecycle, implementation and configuration, ES and electronic commerce and ES success and failure factors. The theoretical component will be augmented by detailed case studies which focus on problems faced by real-life companies. For the practical component, laboratory exercises using a well-known enterprise system will be used to deepen student understanding.</p>",
+        "score": "7.38",
+        "total_count": "28"
+    },
+    {
+        "unit_code": "FIT3139",
+        "unit_title": "Computational modelling and simulation",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides an overview of computational science and an introduction to its central methods. It covers the role of computational tools and methods in 21st century science, emphasising modelling and simulation. It introduces a variety of models, providing contrasting studies on: continuous versus discrete models; analytical versus numerical models; deterministic versus stochastic models; and static versus dynamic models. Other topics include: Monte-Carlo methods; epistemology of simulations; visualisation; high-dimensional data analysis; optimisation; limitations of numerical methods; high-performance computing and data-intensive research.</p>\n<p>A general overview is provided for each main topic, followed by a detailed technical exploration of one or a few methods selected from the area. These are applied workshops which also acquaint you with standard scientific computing software (e.g., Mathematica, Matlab, Maple, Sage). Applications are drawn from disciplines including Physics, Biology, Bioinformatics, Chemistry, Social Science.</p>",
+        "score": "8.35",
+        "total_count": "49"
+    },
+    {
+        "unit_code": "FIT3143",
+        "unit_title": "Parallel computing",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Modern computer systems contain parallelism in both hardware and software. This unit covers parallelism in both general purpose and application specific computer architectures and the programming paradigms that allow parallelism to be exploited in software. The unit examines shared memory and message passing paradigms in hardware and software; concurrency, multithreading and synchronicity; parallel, clustered and distributed supercomputing algorithms, languages and software tools and development environments. You will learn to design and develop parallel algorithms in these paradigms, and apply technical writing and presentation to communicate parallel computing.</p>",
+        "score": "5.52",
+        "total_count": "88"
+    },
+    {
+        "unit_code": "FIT3144",
+        "unit_title": "Advanced computer science research project",
+        "study_level": "Undergraduate",
+        "credit_points": "12",
+        "description": "<p>This unit is intended to provide practical experience in designing, developing and testing a non-trivial computer science project. Projects are generally software-based, although sometimes they may involve hardware development or investigation of theory. Projects cover the whole process of software (or hardware) development, from analysis through design to implementation and testing. Comprehensive written documentation on the project is required. Students are assigned in groups to a project supervisor. There are no lectures in this unit, although students will be expected to attend regular meetings with their project supervisor. The application problem will normally be drawn from the student's field of specialisation.</p>",
+        "score": "10.0",
+        "total_count": "2"
+    },
+    {
+        "unit_code": "FIT3146",
+        "unit_title": "Maker lab",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will enable you to create new artefacts which utilise developments in information technology. The unit will combine the theoretical and technical skills gained in other units into a problem solving context and allow the you to gain the skills needed to create solutions of problems using technology. You will learn valuable research and communication skills as they explore and create using a variety of technologies that support the making process. You will have the opportunity to explore new technologies and undertake the prototyping and refinement process in an environment that supports independent learning. You will have the opportunity to use technology to solve a problem which is of interest.</p>",
+        "score": "8.0",
+        "total_count": "48"
+    },
+    {
+        "unit_code": "FIT3152",
+        "unit_title": "Data analytics",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>There has been an explosion in the quantity and variety of data collected and routinely analysed by government, business and society at large over recent years. This has been described by some social commentators as the rise of \"big data\" and and the analysts and practitioners who investigate this data as \"data scientists.\" This unit will introduce you to the analysis of big data and the role of the data scientist. Techniques covered include data management and transformation, visual analysis, social network analysis, statistical learning, clustering and natural language processing. You will be introduced to these methods using open source industry standard software. Data and case studies will be drawn from diverse sources. The general principles of analysis, investigation and reporting will be covered. You will be encouraged to critically reflect on the data analysis process within your own domain of interest.</p>",
+        "score": "6.54",
+        "total_count": "39"
+    },
+    {
+        "unit_code": "FIT3154",
+        "unit_title": "Advanced data analysis",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces the problem of machine learning and the major kinds of statistical learning used in data analysis. Learning and the different kinds of learning will be covered and their usage discussed. Evaluation techniques and typical application contexts will presented. A series of different models and algorithms will be presented in an exploratory way: looking at typical data, the basic models and algorithms and their use: linear and logistic regression, support vector machines, Bayesian networks, decision trees, random forests, k-means and clustering, neural-networks, deep learning, and others. Finally, two specialist topics will be covered briefly, statistical learning theory and working with big data.</p>",
+        "score": "7.75",
+        "total_count": "18"
+    },
+    {
+        "unit_code": "FIT3155",
+        "unit_title": "Advanced data structures and algorithms",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit builds on the concepts learnt in introductory algorithms and data structures study. It covers advanced algorithmic paradigms and problem-solving techniques required to address real-world programming challenges. It explores, in depth, the design and analysis of space-efficient data structures and time-efficient problem solving strategies to be used with them. Topics include amortized analysis, advanced sorting and searching algorithms, new tree/string/graph data structures and algorithms, and number-theoretic algorithms amongst others.</p>",
+        "score": "8.05",
+        "total_count": "40"
+    },
+    {
+        "unit_code": "FIT3158",
+        "unit_title": "Business decision modelling",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<div>\n<p>The objective of this unit is to introduce students to quantitative modelling techniques commonly used for business decision making. This includes the analytical methods used to understand, model and design business processes, and the application of IT tools to real-world decision making situations. Techniques covered include decision making under uncertainty, linear and nonlinear programming, sequential decision making, forecasting, and simulation.</p>\n<p>On completion of this unit, the students are expected to recognise a complex decision making situation and to build a corresponding quantitative model. They are also expected to solve the model by applying techniques covered in this unit, to interpret results and finally, to provide 'analyst-type' recommendations. The unit includes extensive use of advanced modelling tools available in Microsoft Excel. Students will also be made aware of simulation software as a tool for analysing business processes.</p>\n</div>\n<div>\u00a0</div>",
+        "score": "6.72",
+        "total_count": "43"
+    },
+    {
+        "unit_code": "FIT3159",
+        "unit_title": "Computer architecture",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit covers the internal mechanism of computers and how they are organised and programmed. Topics include combinatorial and sequential logic, Boolean Algebra, counters, ripple adders, tree adders, memory/addressing, busses, speed, DMA, data representation, machine arithmetic, microprogramming, caches and cache architectures, virtual memory and translation look-aside buffers, vectored interrupts, polled interrupts, pipelined architecture, superscalar architecture, data dependency, hazards, CISC, RISC, VLIW machine architectures.</p>",
+        "score": "7.9",
+        "total_count": "65"
+    },
+    {
+        "unit_code": "FIT3161",
+        "unit_title": "Computer science project 1",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides practical experience in researching, designing, developing and testing a substantial computer science project. Projects are generally software-based, although sometimes they may involve hardware development or investigation of theory. Projects cover the whole process of software (or hardware) development, from analysis through design to implementation and testing. Comprehensive written documentation on the project is required. You are assigned in groups to a project supervisor. You will be expected to meet weekly with your project supervisor during formal lab sessions, and attend 2-hour project management seminars during the first six weeks. Other workshops relevant to research and development of the project will be held in the latter six weeks.</p>\n<p>The unit is the first part of a 12-credit point project sequence; the second part and exit point for the project is FIT3162.</p>",
+        "score": "4.27",
+        "total_count": "22"
+    },
+    {
+        "unit_code": "FIT3162",
+        "unit_title": "Computer science project 2",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides practical experience in researching, designing, developing and testing a non-trivial computer science project. Projects are generally software-based, although sometimes they may involve hardware development or investigation of theory. Projects cover the whole process of software (or hardware) development, from analysis through design to implementation and testing. Comprehensive written documentation on the project is required. Students are assigned in groups to a project supervisor. There are no lectures in this unit, although you will be expected to attend regular meetings with your project supervisor.</p>\n<p>The unit is the second part of a 12-credit point project sequence; the first part and entry point for the project is FIT3161.</p>",
+        "score": "5.29",
+        "total_count": "7"
+    },
+    {
+        "unit_code": "FIT3163",
+        "unit_title": "Data science project 1",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides practical experience in researching, designing, developing and evaluating a non-trivial data science project. Projects involve whole or part of the data science process (visualisation, analysis, algorithms, etc.) but can also be software-based, or they may involve investigation of theory. Projects if software-based should cover analysis through design to implementation and sting. Comprehensive written documentation on the project is required. Students are assigned in groups to a project supervisor. There are no lectures in this unit, although you will be expected to attend regular meetings with your project supervisor. The unit is the first part of a 12-credit point project sequence; the second part and exit point for the project is FIT3164.</p>",
+        "score": "5.5",
+        "total_count": "4"
+    },
+    {
+        "unit_code": "FIT3164",
+        "unit_title": "Data science project 2",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides practical experience in researching, designing, developing and testing a non-trivial data science project. Projects involve whole or part of the data science process (visualisation, analysis, algorithms, etc.) but can also be software-based, or they may involve investigation of theory. Projects if software-based should cover analysis through design to implementation and testing. Comprehensive written documentation on the project is required. Students are assigned in groups to a project supervisor. There are no lectures in this unit, although you will be expected to attend regular meetings with your project supervisor. The unit is the second part of a 12-credit point project sequence; the first part and entry point for the project is FIT3163.</p>",
+        "score": "3.4",
+        "total_count": "10"
+    },
+    {
+        "unit_code": "FIT3165",
+        "unit_title": "Computer networks",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>The unit introduces computer networks with an explicit software and system-centric focus. It provides foundation skills in data communications, networks, and associated software interfaces, and introduces basic principles in network design, configuration, management and security.</p>",
+        "score": "7.77",
+        "total_count": "43"
+    },
+    {
+        "unit_code": "FIT3168",
+        "unit_title": "IT forensics",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit provides a broad coverage of digital ICT forensics. You will examine definitions of evidence as they apply to investigations involving the seizure and examination of information technology devices. The unit will introduce you to various tools, techniques and algorithms that may be employed by investigators for acquisition, preservation and analysis of evidence. Disk-based (local) and network (remote) forensic environments will be explored. You will also learn of the impediments and complicating factors that can threaten forensic investigations.</p>",
+        "score": "7.47",
+        "total_count": "48"
+    },
+    {
+        "unit_code": "FIT3170",
+        "unit_title": "Software engineering practice",
+        "study_level": "Undergraduate",
+        "credit_points": "12",
+        "description": "<p>In this unit, you will undertake a full-year software development project in a self-managing team. You will apply the skills they learned in prerequisite and co-requisite units to a larger project than any they have encountered to date. Through attempting larger-scale software development you will learn how the techniques you have encountered in isolation work together as an integrated methodology to make such complex projects feasible.</p>\n<p>The project will be managed through a heavyweight process model such as the Spiral Model, to ensure you are exposed to a representative example of both heavyweight and lightweight processes (which are covered in FIT2101) through the BSE core.</p>\n<p>For the first time in your degrees, you will solicit and document requirements from client proxies who are not IT professionals. This builds your communication skills with other stakeholders in preparation for the industry-based project or IBL.</p>",
+        "score": "8.4",
+        "total_count": "46"
+    },
+    {
+        "unit_code": "FIT3171",
+        "unit_title": "Databases",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will provide an introduction to the concepts of database design and usage and the related issues of data management. You will develop skills in planning, designing, and implementing a data model using an enterprise-scale relational database system (Oracle). Methods and techniques will also be presented to populate, retrieve, update and implement integrity features on data in the implemented database system.</p>",
+        "score": "7.07",
+        "total_count": "22"
+    },
+    {
+        "unit_code": "FIT3172",
+        "unit_title": "Sonics",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit focuses on the capture, editing and creation/generation of digital sounds and soundscapes for virtual reality environments and games. You will gain an understanding of the physical and acoustic properties of digital sounds, their communicative capacities, and learn how to layer, manipulate, synthesise and adaptively code digital sound waveforms. In their assignments, you will apply this understanding in the design and creative production of a soundscapes, soundtracks and the sound design of immersive environments.</p>",
+        "score": "6.7",
+        "total_count": "15"
+    },
+    {
+        "unit_code": "FIT3173",
+        "unit_title": "Software security",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit aims to introduce secure software development issues from the design stage, through to implementation, testing and deployment. Topics studied include the secure software development life cycle, secure software design principles, threat evaluation models, secure coding and development practices, software security testing, deployment and maintenance. You are provided with a range of practical exercises and tasks to reinforce your skills including: identification of security bugs in programs written in different programming languages, design, implementation, and testing of secure concurrent and networked applications and identification of vulnerabilities in networked and mobile/wireless applications.</p>",
+        "score": "7.25",
+        "total_count": "42"
+    },
+    {
+        "unit_code": "FIT3174",
+        "unit_title": "IT strategy and governance",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit develops students\u2019 understanding of information technology strategy and governance by introducing key theories and frameworks (e.g., Strategic Alignment and maturity, Knowledge Management, and COBIT governance framework) in addition to facilitating active learning through case studies. The unit discusses IT governance in the context of strategy implementation and considers the current development of IT in business contexts, including digital transformation, Big Data, artificial intelligence, cyber security and risks, and the associated human and infrastructure management issues. The unit takes into account relevant legislation and standards and draws on case studies to differentiate strategies focused primarily on people, business processes, and technologies that can facilitate each approach.</p>",
+        "score": "8.1",
+        "total_count": "41"
+    },
+    {
+        "unit_code": "FIT3175",
+        "unit_title": "Usability",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit explores the underpinning theories, principles and practices of interface design to achieve usable computer-based systems. It examines issues in the design of system interfaces from a number of perspectives: user, programmer, designer. It explores the application of the relevant theories in practice. The unit will cover topics such as methods and tools for developing effective user interfaces, evaluation methods such as the conduct of usability and heuristic evaluations, design of appropriate interface elements including the design of menus and other interaction styles. The unit will also focus on designing for a diverse range of users and environments.</p>",
+        "score": "7.26",
+        "total_count": "81"
+    },
+    {
+        "unit_code": "FIT3176",
+        "unit_title": "Advanced database design",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit will introduce advanced concepts in the areas of database design, including document-store, column-store, and graph database design; implementations in non-relational database systems.</p>",
+        "score": "8.88",
+        "total_count": "32"
+    },
+    {
+        "unit_code": "FIT3178",
+        "unit_title": "iOS app development",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit focuses on the design, development and deployment of mobile apps for iOS using the Swift programming language. You will learn best practices for iOS development using native frameworks and common design patterns. The unit will explore areas such as mobile UI design, data storage, web services and networking, mobile sensors, use of media, and mobile interface testing. The unit will emphasise hands-on, practical experience with the Xcode development environment and iOS simulator. You will design and build your own app.</p>",
+        "score": "8.33",
+        "total_count": "35"
+    },
+    {
+        "unit_code": "FIT3179",
+        "unit_title": "Data visualisation",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Data visualisation is a powerful technique that allows us to use our visual system to understand data. Interactive data visualisation is now common in business, engineering and design and the social and physical sciences. This unit introduces the main kinds of information graphics and interactive visualisation systems and their areas of application. It investigates the reasons why visualisation can be effective and based on this students will gain experience in critically assessing data visualisations and in designing their own visualisations. You will learn how to create visualisations with representative computer tools and gain experience in creating a data visualisation for an application domain of their choice.</p>",
+        "score": "6.34",
+        "total_count": "105"
+    },
+    {
+        "unit_code": "FIT3181",
+        "unit_title": "Deep learning",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>Deep learning (DL) has been fuelling Artificial Intelligence (AI) and the Fourth Industrial Revolution in recent years. The success of DL in many applications, including generative AI such as ChatGPT or DALL\u00b7E, has gained rocketed attention and becomes a highly demanded skill across industries and sectors. It is transforming innovations, powering new applications and impact our society in everyday activities. In this unit, the students will learn the foundations of deep learning theory within a broader context of machine learning. At the same time, they will gain hands-on practical skills on how to apply DL to real-world applications across a range of AI cognitive tasks in computer vision such as image and object recognition, in natural language processing such as text classification using deep neural embeddings. Learning activities will focus on understand the fundamental concepts in DL such as neural networks (NN), convolutional NN, backpropagation and optimisation for deep learning, adversarial robustness, attention mechanism, transformer, important concepts in deep generative AI (VAE, GAN), in combination with laboratory sessions to gain hands-on experiences.</p>",
+        "score": "7.63",
+        "total_count": "38"
+    },
+    {
+        "unit_code": "FIT3187",
+        "unit_title": "3D character animation",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit introduces you to advanced character detailing and animation techniques for interactive 3D environments. Building upon the theoretical and technical skills from the prerequisite unit Foundations of 3D, you will explore the principles of character design and motion, with an emphasis on expression, timing, and balance. Through the creation and refinement of animation loops, you will practise the layering of animation in a dynamic game environment. The conceptualisation and preparation of 3D characters for animation sequences will constitute a key focus of this unit.</p>",
+        "score": "9.0",
+        "total_count": "9"
+    },
+    {
+        "unit_code": "FIT4002",
+        "unit_title": "Software engineering industry experience studio project",
+        "study_level": "Undergraduate",
+        "credit_points": "12",
+        "description": "<p>Students will undertake a large project and work in groups on a software project for a client. The client may be internal to Monash or from the industry or research organisation. In general, projects involve all aspects of the system development lifecycle. Groups are responsible for their own project management, with guidance from a supervisor. Some projects will warrant students working in pairs or individually.</p>",
+        "score": "6.32",
+        "total_count": "11"
+    },
+    {
+        "unit_code": "FIT4005",
+        "unit_title": "  IT Research and Innovation Methods",
+        "study_level": "Undergraduate and Postgraduate",
+        "credit_points": "6",
+        "description": "<p>The aim of this unit is to prepare you to conduct research and innovation in the IT industry. It provides broad coverage of the issues, concepts, methods, and techniques associated with the contemporary IT professional as you conduct research, and design and evaluate new products and services. It introduces you to major research and innovation paradigms, the principles of research and innovation design, responsible research and innovation, and research and innovation methods and techniques within IT industry. It also covers how to effectively communicate the results research and innovation through the established method of short-form video. Skills developed and knowledge acquired from this unit will prepare you to plan, conduct and communicate research and innovation within an IT organisation, as well as to be knowledgeable and critical interpreters of research and innovation more generally.</p>",
+        "score": "1.0",
+        "total_count": "5"
+    },
+    {
+        "unit_code": "FIT4042",
+        "unit_title": "Industry-based learning placement",
+        "study_level": "Undergraduate",
+        "credit_points": "18",
+        "description": "<p>Students on placement participate full time in a defined, graduate level role during a 22-week placement period at established partners of the Faculty of IT industry based learning program including major global companies, leading Australian companies and worldwide consultancies. The students on placement apply the knowledge, skills and practices of professional attitudes and behaviour developed in their academic units. They develop communication, time management, self-reflection and customer service skills in business situations, experience and participate professionally in the corporate environment and obtain feedback from experienced supervisors on their performance.</p>",
+        "score": "9.0",
+        "total_count": "3"
+    },
+    {
+        "unit_code": "FIT4165",
+        "unit_title": "Computer networks",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>The unit introduces computer networks with an explicit software and system-centric focus. It provides skills in data communications, networks, and associated software interfaces, and introduces principles in network design, configuration, management and security.</p>",
+        "score": "6.4",
+        "total_count": "30"
+    },
+    {
+        "unit_code": "FIT4441",
+        "unit_title": "Honours thesis part 1",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit is a research unit and a requirement for the FIT Honours degrees. Due to the nature of IT, a wide range of Honours project types can be offered to students. Some project components are of a practical nature and may involve some software development and/or experimentation, while other components are of a more theoretical nature.</p>\n<p>This unit forms part of the sequence of units comprising the Honours thesis in the Faculty of Information Technology.</p>\n<p>The exit point for the Honours thesis is FIT4444 (24 credit points).</p>",
+        "score": "8.2",
+        "total_count": "5"
+    },
+    {
+        "unit_code": "FIT4444",
+        "unit_title": "Honours thesis final",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit is a research unit and a requirement for the FIT Honours degrees. Due to the nature of IT, a wide range of Honours project types can be offered to students. Some project components are of a practical nature and may involve some software development and/or experimentation, while other components are of a more theoretical nature.</p>\n<p>This unit forms part of the sequence of units comprising the Honours thesis in the Faculty of Information Technology and is the exit point for the Honours thesis.</p>",
+        "score": "10.0",
+        "total_count": "1"
+    },
+    {
+        "unit_code": "FIT4701",
+        "unit_title": "Final year software engineering project A",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>The aim of this capstone unit is to provide an opportunity for you to undertake a substantial individual or small group project. Projects undertaken will integrate and build on content from earlier stages of the course. This unit is the first part of a two-unit project.</p>",
+        "score": "7.6",
+        "total_count": "15"
+    },
+    {
+        "unit_code": "FIT4702",
+        "unit_title": "Final year software engineering project B",
+        "study_level": "Undergraduate",
+        "credit_points": "6",
+        "description": "<p>This unit is a continuation of FIT4701 Final year software engineering project A. The aim of this capstone unit is to provide an opportunity for you to undertake a substantial individual or small group project. Projects undertaken will integrate and build on content from earlier stages of the course.</p>",
+        "score": "4.0",
+        "total_count": "3"
+    }
+]
