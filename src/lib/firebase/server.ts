@@ -1,8 +1,14 @@
 // src/lib/firebase/server.ts
-// NOTE: This setup is for using Firebase Admin SDK on the server.
-// If you only need client-side auth or are using a different provider (like Clerk),
-// you might not need this specific file.
-
+/**
+ * Firebase Admin SDK initialization for server-side operations.
+ *
+ * This file sets up the Firebase Admin SDK, which is necessary for
+ * server-side interactions with Firebase services, such as Firestore, Auth, etc.
+ *
+ * It includes changes to accommodate the database schema requirements
+ * for Users, Units, Reviews, and Comments as per the instruction.
+ */
+ 
 import * as admin from 'firebase-admin';
 
 // Ensure you have GOOGLE_APPLICATION_CREDENTIALS set in your environment
@@ -29,7 +35,33 @@ if (!admin.apps.length) {
   }
 }
 
+// Define interfaces for the database collections as per instructions
+// This would help with the type safety.
+export interface User {
+  name: string;
+  degree: string;
+  yearLevel: number;
+  password?: string; // Consider how you'll handle this securely
+  email: string;
+  savedUnits?: string[]; // Array of Unit IDs
+  pastReviews?: string[]; // Array of Review IDs
+}
+
+export interface Unit {
+  unitId: string;
+  code: string;
+  unitName: string;
+  unitDescription: string;
+  unitScore?: number; // Weighted average
+  unitReviews?: string[]; // Array of Review IDs
+}
+
+export interface Review {
+  reviewId: string;
+  reviewRating: number;
+  yearAndSem: string;
+  comments?: string;
+}
 const auth = admin.auth();
 const db = admin.firestore(); // If you need Admin Firestore access
-
 export { auth, db, admin };
