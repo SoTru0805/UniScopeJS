@@ -21,7 +21,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   unitCode: z.string().min(3, { message: "Unit code must be at least 3 characters." }).max(10),
-  unitName: z.string().min(5, { message: "Unit name must be at least 5 characters." }).max(100),
+  // unitName: z.string().min(5, { message: "Unit name must be at least 5 characters." }).max(100), // Removed unitName
   rating: z.number().min(1, { message: "Rating must be at least 1."}).max(5, { message: "Rating cannot exceed 5."}),
   reviewText: z.string().min(10, { message: "Review must be at least 10 characters." }).max(1000),
 });
@@ -43,7 +43,7 @@ export function ReviewForm({ onSubmit }: ReviewFormProps) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       unitCode: "",
-      unitName: "",
+      // unitName: "", // Removed unitName default value
       rating: 0,
       reviewText: "",
     },
@@ -83,34 +83,33 @@ export function ReviewForm({ onSubmit }: ReviewFormProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-6 p-6 border rounded-lg shadow-sm bg-card">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField
-            control={form.control}
-            name="unitCode"
-            render={({ field }) => (
-                <FormItem>
-                <FormLabel>Unit Code</FormLabel>
-                <FormControl>
-                    <Input placeholder="e.g., COMP101" {...field} disabled={isSubmitting}/>
-                </FormControl>
-                <FormMessage />
-                </FormItem>
-            )}
-            />
-            <FormField
-            control={form.control}
-            name="unitName"
-            render={({ field }) => (
-                <FormItem>
-                <FormLabel>Unit Name</FormLabel>
-                <FormControl>
-                    <Input placeholder="e.g., Introduction to Computing" {...field} disabled={isSubmitting} />
-                </FormControl>
-                <FormMessage />
-                </FormItem>
-            )}
-            />
-        </div>
+        <FormField
+          control={form.control}
+          name="unitCode"
+          render={({ field }) => (
+              <FormItem>
+              <FormLabel>Unit Code</FormLabel>
+              <FormControl>
+                  <Input placeholder="e.g., COMP101" {...field} disabled={isSubmitting}/>
+              </FormControl>
+              <FormMessage />
+              </FormItem>
+          )}
+        />
+         {/* Removed Unit Name Field */}
+        {/* <FormField
+          control={form.control}
+          name="unitName"
+          render={({ field }) => (
+              <FormItem>
+              <FormLabel>Unit Name</FormLabel>
+              <FormControl>
+                  <Input placeholder="e.g., Introduction to Computing" {...field} disabled={isSubmitting} />
+              </FormControl>
+              <FormMessage />
+              </FormItem>
+          )}
+        /> */}
 
         <FormField
           control={form.control}

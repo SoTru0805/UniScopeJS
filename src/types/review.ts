@@ -3,7 +3,7 @@ import type { Timestamp } from 'firebase/firestore';
 export interface Review {
   id: string;
   unitCode: string;
-  unitName: string; // Added unit name for display
+  // unitName: string; // Removed unit name as it will be fetched from DB later
   rating: number; // e.g., 1-5 stars
   reviewText: string;
   createdAt: Timestamp;

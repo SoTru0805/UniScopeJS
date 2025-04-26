@@ -9,7 +9,7 @@ import type { Review } from '@/types/review';
 // Zod schema for form validation on the server-side
 const reviewSchema = z.object({
   unitCode: z.string().min(3).max(10),
-  unitName: z.string().min(5).max(100),
+  // unitName: z.string().min(5).max(100), // Removed unitName
   rating: z.number().min(1).max(5),
   reviewText: z.string().min(10).max(1000),
 });
@@ -25,12 +25,12 @@ export async function submitReview(formData: z.infer<typeof reviewSchema>) {
        throw new Error(`Validation failed: ${JSON.stringify(errors)}`);
    }
 
-   const { unitCode, unitName, rating, reviewText } = validatedData.data;
+   const { unitCode, rating, reviewText } = validatedData.data; // Removed unitName
 
   try {
     const docRef = await addDoc(collection(db, 'reviews'), {
       unitCode: unitCode.toUpperCase(), // Standardize unit code
-      unitName,
+      // unitName, // Removed unitName
       rating,
       reviewText,
       createdAt: serverTimestamp(), // Use server timestamp
@@ -50,12 +50,20 @@ export async function getReviews(): Promise<Review[]> {
     // Order by creation date descending by default
     const q = query(reviewsCol, orderBy('createdAt', 'desc'));
     const reviewSnapshot = await getDocs(q);
-    const reviewList = reviewSnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...(doc.data() as Omit<Review, 'id'>),
-      // Ensure createdAt is a Firestore Timestamp for client-side date formatting
-      createdAt: doc.data().createdAt instanceof Timestamp ? doc.data().createdAt : Timestamp.now(),
-    }));
+    const reviewList = reviewSnapshot.docs.map(doc => {
+        const data = doc.data();
+        // Ensure createdAt is a Firestore Timestamp for client-side date formatting
+        const createdAt = data.createdAt instanceof Timestamp ? data.createdAt : Timestamp.now();
+
+        return {
+            id: doc.id,
+            unitCode: data.unitCode,
+            // unitName is no longer directly stored here
+            rating: data.rating,
+            reviewText: data.reviewText,
+            createdAt: createdAt,
+        } as Review; // Cast to Review type (without unitName)
+    });
     return reviewList;
   } catch (error) {
     console.error('Error fetching reviews: ', error);

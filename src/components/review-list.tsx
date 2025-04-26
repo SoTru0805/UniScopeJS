@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { summarizeReviews } from '@/ai/flows/summarize-reviews'; // Import the Genkit flow
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Loader2, MessageSquareText, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { Loader2, MessageSquareText } from 'lucide-react'; // Removed ThumbsUp/Down as they aren't used
 import { Separator } from '@/components/ui/separator';
 
 interface ReviewListProps {
@@ -30,8 +30,8 @@ export function ReviewList({ reviews: initialReviews, unitCode }: ReviewListProp
       const ratingMatch = filterRating === null || review.rating === filterRating;
       const termMatch = searchTerm === '' ||
                         review.reviewText.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        review.unitCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        review.unitName.toLowerCase().includes(searchTerm.toLowerCase());
+                        review.unitCode.toLowerCase().includes(searchTerm.toLowerCase());
+                        // Removed unitName from search filter: || review.unitName.toLowerCase().includes(searchTerm.toLowerCase());
       return ratingMatch && termMatch;
     });
 
@@ -57,15 +57,19 @@ export function ReviewList({ reviews: initialReviews, unitCode }: ReviewListProp
   }, [initialReviews, sortOrder, filterRating, searchTerm]);
 
   const handleSummarize = async () => {
-    if (reviews.length === 0) {
-        setSummarizeError("No reviews available to summarize for this unit.");
+    // Filter reviews based on the *currently* selected unit code for summarization
+    const reviewsForUnit = reviews.filter(r => r.unitCode.toLowerCase() === unitCode.toLowerCase());
+
+    if (reviewsForUnit.length === 0) {
+        setSummarizeError(`No reviews available to summarize for ${unitCode}.`);
+        setSummary(null); // Clear any previous summary
         return;
     }
     setIsSummarizing(true);
     setSummary(null);
     setSummarizeError(null);
     try {
-      const reviewTexts = reviews.map(r => r.reviewText);
+      const reviewTexts = reviewsForUnit.map(r => r.reviewText);
       const result = await summarizeReviews({ unitCode, reviews: reviewTexts });
       setSummary(result.summary);
     } catch (error) {
@@ -80,7 +84,7 @@ export function ReviewList({ reviews: initialReviews, unitCode }: ReviewListProp
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4 p-4 border rounded-lg bg-card shadow-sm">
         <Input
-          placeholder="Search reviews (unit, text)..."
+          placeholder="Search reviews (unit code, text)..." // Updated placeholder
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="flex-grow"
@@ -119,9 +123,9 @@ export function ReviewList({ reviews: initialReviews, unitCode }: ReviewListProp
           <div className="flex justify-between items-center">
              <h3 className="text-lg font-semibold flex items-center gap-2">
                 <MessageSquareText className="w-5 h-5 text-primary" />
-                AI Review Summary
+                AI Review Summary for {unitCode}
             </h3>
-             <Button onClick={handleSummarize} disabled={isSummarizing} variant="outline" size="sm">
+             <Button onClick={handleSummarize} disabled={isSummarizing || reviews.length === 0} variant="outline" size="sm">
                 {isSummarizing ? (
                     <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -147,12 +151,12 @@ export function ReviewList({ reviews: initialReviews, unitCode }: ReviewListProp
          )}
          {summary && !isSummarizing && (
            <Alert className="bg-accent/50 border-primary/30">
-             <AlertTitle className="font-medium text-primary">Summary</AlertTitle>
+             <AlertTitle className="font-medium text-primary">Summary for {unitCode}</AlertTitle>
              <AlertDescription className="text-foreground">{summary}</AlertDescription>
            </Alert>
          )}
         {!summary && !isSummarizing && !summarizeError && (
-             <p className="text-sm text-muted-foreground italic">Click "Generate Summary" to get an AI-powered overview of the reviews below.</p>
+             <p className="text-sm text-muted-foreground italic">Click "Generate Summary" to get an AI-powered overview of the reviews displayed below for unit {unitCode}.</p>
         )}
        </div>
 

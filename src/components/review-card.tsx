@@ -38,7 +38,8 @@ export function ReviewCard({ review }: ReviewCardProps) {
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-200">
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
-             <CardTitle className="text-lg font-semibold">{review.unitName || review.unitCode}</CardTitle>
+             {/* Display only unitCode as title now */}
+             <CardTitle className="text-lg font-semibold">{review.unitCode}</CardTitle>
              <RatingDisplay rating={review.rating} />
         </div>
          <CardDescription className="text-xs text-muted-foreground">
