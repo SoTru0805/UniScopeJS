@@ -28,8 +28,8 @@ export async function getUserReviews(userId: string) {
     console.log('fetching reviews of user: ', userId)
     //for now return dummy data
     const reviews: Review[] = [
-    { id: '1', unitCode: 'FIT2004', rating: 1, reviewText: "I never wore my seatbelt while driving to school because I want to die before making to this unit's class.", createdAt: new Date().toISOString(), userId: userId },
-    { id: '2', unitCode: 'FIT2004', rating: 4, reviewText: "I never wore my seatbelt while driving to school because I want to die before making to this unit's class.", createdAt: new Date().toISOString(), userId: userId },
+        { id: '1', unitCode: 'FIT2004', rating: 1, reviewText: "This unit was incredibly challenging. The content was dense, and the pace was very fast. I struggled to keep up.", createdAt: new Date().toISOString(), userId: userId },
+    { id: '2', unitCode: 'FIT2004', rating: 4, reviewText: "I really enjoyed the practical aspects of this unit. The hands-on labs were very helpful in understanding the concepts.", createdAt: new Date().toISOString(), userId: userId },
 ];
     return reviews
 
@@ -47,6 +47,27 @@ export async function getUserDetails(userId: string) {
 }
 
 
+export async function getBookmarkedReviews() {
+    console.log('fetching bookmarked reviews')
+     const reviews: Review[] = [
+        { id: '1', unitCode: 'FIT3077', rating: 4, reviewText: "The group project was a highlight. It was a great experience to work with others on a real-world problem.", createdAt: new Date('2024-01-15').toISOString(), userId: "1" },
+        { id: '2', unitCode: 'MAT1830', rating: 3, reviewText: "The lectures were sometimes hard to follow, but the tutorials made up for it. More examples would be nice.", createdAt: new Date('2024-01-10').toISOString(), userId: "2" },
+    ];
+    return reviews
+}
+
+export async function getReviews(): Promise<Review[]> {
+    console.log('fetching trending reviews')
+    const reviews: Review[] = [
+        { id: '1', unitCode: 'FIT2004', rating: 1, reviewText: "The workload was immense, and the lectures were very theoretical. Not much hands-on experience.", createdAt: new Date('2024-01-20').toISOString(), userId: "1" },
+        { id: '2', unitCode: 'FIT2001', rating: 5, reviewText: "This unit completely changed my perspective on systems development. It's very well structured and engaging.", createdAt: new Date('2024-01-19').toISOString(), userId: "2" },
+        { id: '3', unitCode: 'FIT2002', rating: 3, reviewText: "The project management unit was okay. The content was relevant, but the assessment tasks were somewhat tedious.", createdAt: new Date('2024-01-18').toISOString(), userId: "3" },
+        { id: '4', unitCode: 'FIT2099', rating: 4, reviewText: "Object-Oriented Design was challenging but rewarding. The assignments really tested my understanding.", createdAt: new Date('2024-01-17').toISOString(), userId: "4" },
+        { id: '5', unitCode: 'FIT3077', rating: 2, reviewText: "The content was interesting, but the organization of the unit could have been better.", createdAt: new Date('2024-01-16').toISOString(), userId: "5" },
+        { id: '6', unitCode: 'MAT1830', rating: 3, reviewText: "The math unit was crucial for my understanding of algorithms, but it was quite dry at times.", createdAt: new Date('2024-01-15').toISOString(), userId: "6" },
+    ];
+    return reviews
+}
 // --- Review Schemas and Actions ---
 
 const reviewSchema = z.object({
@@ -93,37 +114,6 @@ export async function submitReview(formData: z.infer<typeof reviewSchema>) {
         throw error; // Rethrow auth error
     }
     throw new Error('Failed to submit review to database.'); // Throw specific error
-  }
-}
-
-export async function getReviews(): Promise<Review[]> {
-  try {
-    const reviewsCol = collection(db, 'reviews');
-    // Order by creation date descending by default
-    const q = query(reviewsCol, orderBy('createdAt', 'desc'));
-    const reviewSnapshot = await getDocs(q);
-    const reviewList = reviewSnapshot.docs.map(doc => {
-        const data = doc.data();
-        // Ensure createdAt is a Firestore Timestamp before converting
-        const createdAtTimestamp = data.createdAt instanceof Timestamp ? data.createdAt : Timestamp.now();
-        // Convert Timestamp to ISO string for serialization
-        const createdAtISO = createdAtTimestamp.toDate().toISOString();
-
-        return {
-            id: doc.id,
-            unitCode: data.unitCode,
-            rating: data.rating,
-            reviewText: data.reviewText,
-            createdAt: createdAtISO, // Pass ISO string instead of Timestamp
-            userId: data.userId, // Include userId if available
-        } as Review;
-    });
-    return reviewList;
-  } catch (error) {
-    console.error('Error fetching reviews: ', error);
-    // In a real app, you might want to log this error and return an empty array
-    // or throw a custom error to be handled by an error boundary.
-    return [];
   }
 }
 
