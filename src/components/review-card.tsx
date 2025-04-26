@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Star, StarHalf, CalendarDays } from "lucide-react"; // Added CalendarDays
 import { formatDistanceToNow, parseISO } from 'date-fns'; // Import parseISO
 import { Badge } from "@/components/ui/badge"; // Import Badge
+import Link from "next/link";
 
 interface ReviewCardProps {
   review: Review;
@@ -42,6 +43,11 @@ export function ReviewCard({ review }: ReviewCardProps) {
     <Card className="shadow-sm hover:shadow-md transition-shadow duration-200 border border-border/60 group">
       <CardHeader className="pb-3 pt-4 px-4"> {/* Adjust padding */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2 gap-2">
+          <Link href={`/user/${review.userId}`}>
+          <div className="text-foreground hover:text-primary group-hover:text-primary transition-colors duration-200 underline">
+            {review.userName}
+          </div>
+        </Link>
              <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-200">{review.unitCode}</CardTitle>
              <RatingDisplay rating={review.rating} />
         </div>
