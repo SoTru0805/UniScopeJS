@@ -1,12 +1,10 @@
-import type { Timestamp } from 'firebase/firestore';
 
 export interface Review {
   id: string;
   unitCode: string;
-  // unitName: string; // Removed unit name as it will be fetched from DB later
   rating: number; // e.g., 1-5 stars
   reviewText: string;
-  createdAt: Timestamp;
+  createdAt: string; // Changed from Timestamp to string (ISO format)
   // Add other relevant fields like reviewer name (if using auth), difficulty, workload, etc.
   // reviewerId?: string;
   // difficulty?: number; // 1-5

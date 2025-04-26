@@ -3,7 +3,7 @@
 import type { Review } from "@/types/review";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Star, StarHalf } from "lucide-react";
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, parseISO } from 'date-fns'; // Import parseISO
 
 interface ReviewCardProps {
   review: Review;
@@ -30,8 +30,9 @@ function RatingDisplay({ rating }: { rating: number }) {
 
 
 export function ReviewCard({ review }: ReviewCardProps) {
+    // Parse the ISO string back to a Date object before formatting
     const formattedDate = review.createdAt
-    ? formatDistanceToNow(review.createdAt.toDate(), { addSuffix: true })
+    ? formatDistanceToNow(parseISO(review.createdAt), { addSuffix: true })
     : 'Date unavailable';
 
   return (
@@ -49,7 +50,6 @@ export function ReviewCard({ review }: ReviewCardProps) {
       </CardHeader>
       <CardContent>
         <p className="text-foreground">{review.reviewText}</p>
-        {/* Add more details if needed */}
       </CardContent>
     </Card>
   );

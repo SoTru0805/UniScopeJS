@@ -10,6 +10,7 @@ import { summarizeReviews } from '@/ai/flows/summarize-reviews'; // Import the G
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Loader2, MessageSquareText } from 'lucide-react'; // Removed ThumbsUp/Down as they aren't used
 import { Separator } from '@/components/ui/separator';
+import { parseISO } from 'date-fns'; // Import parseISO
 
 interface ReviewListProps {
   reviews: Review[];
@@ -31,16 +32,17 @@ export function ReviewList({ reviews: initialReviews, unitCode }: ReviewListProp
       const termMatch = searchTerm === '' ||
                         review.reviewText.toLowerCase().includes(searchTerm.toLowerCase()) ||
                         review.unitCode.toLowerCase().includes(searchTerm.toLowerCase());
-                        // Removed unitName from search filter: || review.unitName.toLowerCase().includes(searchTerm.toLowerCase());
       return ratingMatch && termMatch;
     });
 
     filtered.sort((a, b) => {
       switch (sortOrder) {
         case 'newest':
-          return b.createdAt.toMillis() - a.createdAt.toMillis();
+          // Parse ISO strings to Date objects for comparison
+          return parseISO(b.createdAt).getTime() - parseISO(a.createdAt).getTime();
         case 'oldest':
-          return a.createdAt.toMillis() - b.createdAt.toMillis();
+          // Parse ISO strings to Date objects for comparison
+          return parseISO(a.createdAt).getTime() - parseISO(b.createdAt).getTime();
         case 'highest':
           return b.rating - a.rating;
         case 'lowest':

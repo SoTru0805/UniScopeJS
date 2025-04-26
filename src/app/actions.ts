@@ -9,7 +9,6 @@ import type { Review } from '@/types/review';
 // Zod schema for form validation on the server-side
 const reviewSchema = z.object({
   unitCode: z.string().min(3).max(10),
-  // unitName: z.string().min(5).max(100), // Removed unitName
   rating: z.number().min(1).max(5),
   reviewText: z.string().min(10).max(1000),
 });
@@ -25,12 +24,11 @@ export async function submitReview(formData: z.infer<typeof reviewSchema>) {
        throw new Error(`Validation failed: ${JSON.stringify(errors)}`);
    }
 
-   const { unitCode, rating, reviewText } = validatedData.data; // Removed unitName
+   const { unitCode, rating, reviewText } = validatedData.data;
 
   try {
     const docRef = await addDoc(collection(db, 'reviews'), {
       unitCode: unitCode.toUpperCase(), // Standardize unit code
-      // unitName, // Removed unitName
       rating,
       reviewText,
       createdAt: serverTimestamp(), // Use server timestamp
@@ -52,17 +50,18 @@ export async function getReviews(): Promise<Review[]> {
     const reviewSnapshot = await getDocs(q);
     const reviewList = reviewSnapshot.docs.map(doc => {
         const data = doc.data();
-        // Ensure createdAt is a Firestore Timestamp for client-side date formatting
-        const createdAt = data.createdAt instanceof Timestamp ? data.createdAt : Timestamp.now();
+        // Ensure createdAt is a Firestore Timestamp before converting
+        const createdAtTimestamp = data.createdAt instanceof Timestamp ? data.createdAt : Timestamp.now();
+        // Convert Timestamp to ISO string for serialization
+        const createdAtISO = createdAtTimestamp.toDate().toISOString();
 
         return {
             id: doc.id,
             unitCode: data.unitCode,
-            // unitName is no longer directly stored here
             rating: data.rating,
             reviewText: data.reviewText,
-            createdAt: createdAt,
-        } as Review; // Cast to Review type (without unitName)
+            createdAt: createdAtISO, // Pass ISO string instead of Timestamp
+        } as Review;
     });
     return reviewList;
   } catch (error) {
