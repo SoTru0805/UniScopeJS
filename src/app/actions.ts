@@ -1,7 +1,7 @@
 
 'use server';
 
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, unstable_cache } from 'next/cache';
 import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, Timestamp, doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { z } from 'zod';
@@ -10,6 +10,7 @@ import type { Review } from '@/types/review';
 import type { UnitSummary } from '@/types/unit-summary';
 import type { Unit } from '@/types/unit';
 import type { UserProfile } from '@/types/user'; // Import UserProfile type
+import { use } from 'react';
 
 // --- Sample Data ---
 const sampleUnits: Unit[] = [
@@ -18,6 +19,32 @@ const sampleUnits: Unit[] = [
   { unitId: 'FIT2004', code: 'FIT2004', name: 'Algorithms and data structures', level: 'Undergraduate', creditPoints: 6, description: "<p>This unit introduces you to problem solving concepts and techniques fundamental to the science of programming. In doing this it covers problem specification, algorithmic design, analysis and implementation. Detailed topics include analysis of best, average and worst-case time and space complexity; introduction to numerical algorithms; recursion; advanced data structures such as heaps and B-trees; hashing; sorting algorithms; searching algorithms; graph algorithms; and numerical computing.</p>" },
   // Add more units if needed, e.g., from a CSV import in a real scenario
 ];
+
+
+
+// --- New Data Functions ---
+
+export async function getUserReviews(userId: string) {
+    console.log('fetching reviews of user: ', userId)
+    //for now return dummy data
+    const reviews: Review[] = [
+    { id: '1', unitCode: 'FIT2004', rating: 1, reviewText: "I never wore my seatbelt while driving to school because I want to die before making to this unit's class.", createdAt: new Date().toISOString(), userId: userId },
+    { id: '2', unitCode: 'FIT2004', rating: 4, reviewText: "I never wore my seatbelt while driving to school because I want to die before making to this unit's class.", createdAt: new Date().toISOString(), userId: userId },
+];
+    return reviews
+
+}
+
+export async function getUserDetails(userId: string) {
+    console.log('fetching user details of : ', userId)
+    //for now return dummy data
+    return {
+        name: 'Tung Tung Tung Tung Sahur',
+        userName: 'tungsahur01',
+        description: 'Bachelor of Engineering - Specialised in Software Engineering',
+    };
+
+}
 
 
 // --- Review Schemas and Actions ---
