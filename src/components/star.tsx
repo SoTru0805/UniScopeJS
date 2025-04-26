@@ -1,21 +1,25 @@
-import { Star as StarIcon, StarHalf, StarOff } from "lucide-react";
+import { Star as StarIcon, StarHalf } from "lucide-react";
 
 interface StarProps {
   type: "full" | "half" | "empty";
   color?: string;
+  size?: number;
 }
 
-export function Star({ type, color = "black" }: StarProps) {
-  const starColor = color;
-  
+export function Star({ type, color = "black", size = 24 }: StarProps) {
+  const commonProps = {
+    color,
+    size,
+  };
+
   switch (type) {
     case "full":
-      return <StarIcon fill={starColor} color={starColor} />;
+      return <StarIcon {...commonProps} fill={color} />;
     case "half":
-      return <StarHalf fill={starColor} color={starColor} />;
+      return <StarHalf {...commonProps} fill={color} />;
     case "empty":
-      return <StarOff fill="none" color={starColor} />;
+      return <StarIcon {...commonProps} fill="none" />; // just outline, no fill!
     default:
-      return <StarOff fill="none" color={starColor} />;
+      return <StarIcon {...commonProps} fill="none" />;
   }
 }

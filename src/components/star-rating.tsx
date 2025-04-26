@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Star } from "./star";
 
 interface StarRatingProps {
@@ -14,13 +13,11 @@ export function StarRating({ rating, setRating }: StarRatingProps) {
   };
 
   const handleMouseEnter = (hoverRating: number) => {
-    if (hoverRating !== rating) {
-        setRating(hoverRating);
-    }
+    // Optional: live preview hover, but we're not changing state here
   };
-  
+
   const handleMouseLeave = () => {
-    
+    // Optional: reset hover effects if you want later
   };
 
   const stars = [];
@@ -32,13 +29,20 @@ export function StarRating({ rating, setRating }: StarRatingProps) {
       <span
         key={i}
         onClick={() => handleClick(isHalf ? i : isFull ? i - 0.5 : i)}
-        onMouseEnter={() => handleMouseEnter(isHalf? i : isFull ? i - 0.5 : i)}
-        onMouseLeave={handleMouseLeave}
+        className="cursor-pointer transform transition-transform hover:scale-110"
       >
-        <Star type={isFull ? "full" : isHalf ? "half" : "empty"} />
+        <Star
+          type={isFull ? "full" : isHalf ? "half" : "empty"}
+          size={28}
+          color="gold"
+        />
       </span>
     );
   }
 
-  return <div>{stars}</div>;
+  return (
+    <div className="flex space-x-2 items-center justify-center">
+      {stars}
+    </div>
+  );
 }
