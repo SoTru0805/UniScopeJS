@@ -11,16 +11,17 @@ import type { UnitSummary } from '@/types/unit-summary';
 import type { Unit } from '@/types/unit';
 import type { UserProfile } from '@/types/user'; // Import UserProfile type
 import { use } from 'react';
+import { reviewSchema } from '@/app/constants'; // Import the schema
+
 
 // --- Sample Data ---
-const sampleUnits: Unit[] = [
-  { unitId: 'FIT2001', code: 'FIT2001', name: 'Systems development', level: 'Undergraduate', creditPoints: 6, description: "<p>The unit introduces you to systems analysis and design as a problem solving activity, within the framework of a selected methodology. It will focus on contemporary industry practice; investigating understanding and documenting system requirements; a range of design and implementation activities; and professional skills required for systems development.</p>" },
-  { unitId: 'FIT2002', code: 'FIT2002', name: 'IT project management', level: 'Undergraduate', creditPoints: 6, description: "<p>This unit introduces you to the many concepts, tools and techniques for managing information technology projects. Exploring traditional and agile approaches for managing projects, topics include project lifecycles, project planning, project scheduling, team building, risk management, time and quality management. A case study approach will be used to provide learning opportunities, with an emphasis on the unique aspects of information technology projects.</p>" },
-  { unitId: 'FIT2004', code: 'FIT2004', name: 'Algorithms and data structures', level: 'Undergraduate', creditPoints: 6, description: "<p>This unit introduces you to problem solving concepts and techniques fundamental to the science of programming. In doing this it covers problem specification, algorithmic design, analysis and implementation. Detailed topics include analysis of best, average and worst-case time and space complexity; introduction to numerical algorithms; recursion; advanced data structures such as heaps and B-trees; hashing; sorting algorithms; searching algorithms; graph algorithms; and numerical computing.</p>" },
-  // Add more units if needed, e.g., from a CSV import in a real scenario
-];
-
-
+export async function getSampleUnits() {
+    return [
+      { unitId: "FIT2001", code: "FIT2001", name: "Systems development", level: "Undergraduate", creditPoints: 6, description: "..." },
+      { unitId: "FIT2002", code: "FIT2002", name: "IT project management", level: "Undergraduate", creditPoints: 6, description: "..." },
+      { unitId: "FIT2004", code: "FIT2004", name: "Algorithms and data structures", level: "Undergraduate", creditPoints: 6, description: "..." },
+    ];
+}
 
 // --- New Data Functions ---
 
@@ -68,54 +69,40 @@ export async function getReviews(): Promise<Review[]> {
     ];
     return reviews
 }
-// --- Review Schemas and Actions ---
-
-const reviewSchema = z.object({
-  unitCode: z.string().min(3).max(10),
-  rating: z.number().min(1).max(5),
-  reviewText: z.string().min(10).max(1000),
-});
 
 export async function submitReview(formData: z.infer<typeof reviewSchema>) {
-   // Validate form data on the server
-   const validatedData = reviewSchema.safeParse(formData);
-
-   if (!validatedData.success) {
-       console.error("Server-side validation failed:", validatedData.error.errors);
-       // Flatten errors for better client-side handling if needed
-       const errors = validatedData.error.flatten().fieldErrors;
-       throw new Error(`Validation failed: ${JSON.stringify(errors)}`);
-   }
-
-   const { unitCode, rating, reviewText } = validatedData.data;
-
-  try {
-    // Add check for user authentication before submitting
-    const user = auth.currentUser;
-    if (!user) {
-        throw new Error('You must be logged in to submit a review.');
+    // Validate form data on the server
+    const validatedData = reviewSchema.safeParse(formData);
+  
+    if (!validatedData.success) {
+      console.error("Server-side validation failed:", validatedData.error.errors);
+      const errors = validatedData.error.flatten().fieldErrors;
+      throw new Error(`Validation failed: ${JSON.stringify(errors)}`);
     }
-
-    const docRef = await addDoc(collection(db, 'reviews'), {
-      unitCode: unitCode.toUpperCase(), // Standardize unit code
-      rating,
-      reviewText,
-      createdAt: serverTimestamp(), // Use server timestamp
-      userId: user.uid, // Associate review with the logged-in user
-    });
-    console.log('Review submitted with ID: ', docRef.id);
-    revalidatePath('/'); // Revalidate the homepage to show the new review
-    revalidatePath('/dashboard'); // Revalidate the dashboard page
-    revalidatePath(`/account/my-units`); // Revalidate potentially linked pages
-    return { success: true, id: docRef.id };
-  } catch (error) {
-    console.error('Error adding document: ', error);
-     if (error instanceof Error && error.message.includes('logged in')) {
-        throw error; // Rethrow auth error
+  
+    const { unitCode, rating, reviewText, userId } = validatedData.data;
+  
+    try {
+      const docRef = await addDoc(collection(db, "reviews"), {
+        unitCode: unitCode.toUpperCase(), // Standardize unit code
+        rating,
+        reviewText,
+        createdAt: serverTimestamp(), // Use server timestamp
+        userId, // Use the userId passed from the formData
+      });
+      console.log("Review submitted with ID: ", docRef.id);
+      revalidatePath("/"); // Revalidate the homepage to show the new review
+      revalidatePath("/dashboard"); // Revalidate the dashboard page
+      revalidatePath(`/account/my-units`); // Revalidate potentially linked pages
+      return { success: true, id: docRef.id };
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      if (error instanceof Error && error.message.includes("permission-denied")) {
+        throw new Error("You do not have permission to submit a review.");
+      }
+      throw new Error("Failed to submit review to database."); // Throw specific error
     }
-    throw new Error('Failed to submit review to database.'); // Throw specific error
   }
-}
 
 // --- Unit Data Actions ---
 
