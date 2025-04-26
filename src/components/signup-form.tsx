@@ -53,6 +53,8 @@ export function SignUpForm() {
       // Call Firebase Authentication
       const result = await createUserWithEmailAndPassword(data.email, data.password);
       if (result) {
+        // Sign the user out after successful signup
+        await auth.signOut();
         toast({
           title: 'Account Created',
           description: 'Welcome to UniScope! Please log in.',
