@@ -7,6 +7,16 @@ import { z } from 'zod';
 import { db, auth } from '@/lib/firebase'; // Import auth
 import type { Review } from '@/types/review';
 import type { UnitSummary } from '@/types/unit-summary'; // Import UnitSummary type
+import type { Unit } from '@/types/unit'; // Import Unit type
+
+// --- Sample Data ---
+const sampleUnits: Unit[] = [
+  { unitId: 'FIT2001', code: 'FIT2001', name: 'Systems development', level: 'Undergraduate', creditPoints: 6, description: "<p>The unit introduces you to systems analysis and design as a problem solving activity, within the framework of a selected methodology. It will focus on contemporary industry practice; investigating understanding and documenting system requirements; a range of design and implementation activities; and professional skills required for systems development.</p>" },
+  { unitId: 'FIT2002', code: 'FIT2002', name: 'IT project management', level: 'Undergraduate', creditPoints: 6, description: "<p>This unit introduces you to the many concepts, tools and techniques for managing information technology projects. Exploring traditional and agile approaches for managing projects, topics include project lifecycles, project planning, project scheduling, team building, risk management, time and quality management. A case study approach will be used to provide learning opportunities, with an emphasis on the unique aspects of information technology projects.</p>" },
+  { unitId: 'FIT2004', code: 'FIT2004', name: 'Algorithms and data structures', level: 'Undergraduate', creditPoints: 6, description: "<p>This unit introduces you to problem solving concepts and techniques fundamental to the science of programming. In doing this it covers problem specification, algorithmic design, analysis and implementation. Detailed topics include analysis of best, average and worst-case time and space complexity; introduction to numerical algorithms; recursion; advanced data structures such as heaps and B-trees; hashing; sorting algorithms; searching algorithms; graph algorithms; and numerical computing.</p>" },
+  // Add more units if needed, e.g., from a CSV import in a real scenario
+];
+
 
 // --- Review Schemas and Actions ---
 
@@ -77,6 +87,14 @@ export async function getReviews(): Promise<Review[]> {
 }
 
 // --- Unit Data Actions ---
+
+// New function to return sample units (replace with DB fetch later)
+export async function getAllUnits(): Promise<Unit[]> {
+  // Simulate network delay for demonstration
+  await new Promise(resolve => setTimeout(resolve, 50));
+  return sampleUnits;
+}
+
 
 export async function getUnitsWithAverageRatings(): Promise<UnitSummary[]> {
   try {
