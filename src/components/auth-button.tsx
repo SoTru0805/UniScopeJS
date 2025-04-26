@@ -42,9 +42,11 @@ export function AuthButton({}: AuthButtonProps) {
   const handleSignOut = async () => {
     setIsSigningOut(true);
     try {
-      await signOutUser();
+      // await signOutUser();
+      // Sign the user out
+      await auth.signOut();
       toast({ title: 'Signed Out', description: 'You have been successfully signed out.' });
-      router.push('/'); // Redirect to homepage after sign out
+      router.push('/login'); // Redirect to homepage after sign out
       router.refresh(); // Refresh to reflect the signed-out state across the app
     } catch (error) {
       console.error('Sign out failed:', error);
