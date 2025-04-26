@@ -72,11 +72,11 @@ export default function UnitDetailPage({ params }: UnitDetailPageProps) {
     <main className="flex flex-col min-h-screen items-center p-6 md:p-12 lg:p-20 bg-background">
       <div className="w-full max-w-5xl space-y-8">
         <div className="flex flex-col space-y-4">
-          <h1 className="text-4xl font-bold">{unitName}</h1>
+          <h1 className="text-7xl font-bold">{unitName}</h1>
 
           <div className="flex items-center gap-6">
-            <div className="text-3xl font-semibold">{averageScore.toFixed(1)}/10</div>
-            <div className="flex">
+          <div className="text-6xl font-extrabold text-primary">{averageScore.toFixed(1)}/10</div>
+          <div className="flex">
               {Array.from({ length: 5 }).map((_, index) => (
                 <svg
                   key={index}
