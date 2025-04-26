@@ -2,11 +2,13 @@
 
 import { revalidatePath } from 'next/cache';
 import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { z } from 'zod';
-import { db } from '@/lib/firebase';
+import { db, auth } from '@/lib/firebase'; // Import auth
 import type { Review } from '@/types/review';
 
-// Zod schema for form validation on the server-side
+// --- Review Schemas and Actions ---
+
 const reviewSchema = z.object({
   unitCode: z.string().min(3).max(10),
   rating: z.number().min(1).max(5),
@@ -70,4 +72,85 @@ export async function getReviews(): Promise<Review[]> {
     // or throw a custom error to be handled by an error boundary.
     return [];
   }
+}
+
+
+// --- Authentication Schemas and Actions ---
+
+const signUpSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6, "Password must be at least 6 characters long"),
+});
+
+const signInSchema = z.object({
+    email: z.string().email(),
+    password: z.string(),
+});
+
+
+export async function signUpUser(formData: z.infer<typeof signUpSchema>) {
+    const validatedData = signUpSchema.safeParse(formData);
+
+    if (!validatedData.success) {
+        const errors = validatedData.error.flatten().fieldErrors;
+        console.error("Server-side validation failed (signUpUser):", errors);
+        throw new Error(`Validation failed: ${JSON.stringify(errors)}`);
+    }
+
+    const { email, password } = validatedData.data;
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        console.log('User signed up:', userCredential.user.uid);
+        revalidatePath('/'); // Revalidate relevant paths after sign up
+        return { success: true, userId: userCredential.user.uid };
+    } catch (error: any) {
+        console.error('Error signing up user:', error.code, error.message);
+        // Provide more specific error messages based on Firebase error codes
+        if (error.code === 'auth/email-already-in-use') {
+            throw new Error('This email address is already in use.');
+        } else if (error.code === 'auth/weak-password') {
+             throw new Error('The password is too weak.');
+        }
+        throw new Error(`Sign up failed: ${error.message}`);
+    }
+}
+
+export async function signInUser(formData: z.infer<typeof signInSchema>) {
+    const validatedData = signInSchema.safeParse(formData);
+
+    if (!validatedData.success) {
+        const errors = validatedData.error.flatten().fieldErrors;
+         console.error("Server-side validation failed (signInUser):", errors);
+        throw new Error(`Validation failed: ${JSON.stringify(errors)}`);
+    }
+
+    const { email, password } = validatedData.data;
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log('User signed in:', userCredential.user.uid);
+        revalidatePath('/'); // Revalidate relevant paths after sign in
+        return { success: true, userId: userCredential.user.uid };
+    } catch (error: any) {
+        console.error('Error signing in user:', error.code, error.message);
+         // Provide more specific error messages
+         if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+            throw new Error('Invalid email or password.');
+        }
+        throw new Error(`Sign in failed: ${error.message}`);
+    }
+}
+
+
+export async function signOutUser() {
+    try {
+        await signOut(auth);
+        console.log('User signed out');
+        revalidatePath('/'); // Revalidate relevant paths after sign out
+        return { success: true };
+    } catch (error: any) {
+        console.error('Error signing out user:', error.message);
+        throw new Error(`Sign out failed: ${error.message}`);
+    }
 }

@@ -7,11 +7,21 @@ import { GraduationCap } from 'lucide-react';
 
 export default async function Home() {
   // Fetch initial reviews on the server
-  const reviews = await getReviews();
+  let reviews: Review[] = [];
+  let fetchError = null;
+  try {
+    reviews = await getReviews();
+  } catch (error) {
+     console.error("Error fetching reviews on page load:", error);
+     fetchError = "Could not load reviews at this time. Please try again later.";
+     // Assign an empty array if fetching fails to prevent further errors
+     reviews = [];
+  }
 
-  // Determine a representative unit code for the summary (e.g., the most reviewed one or a default)
-  // This is a placeholder logic. You might want a more sophisticated way to determine the default unit.
-   const defaultUnitCode = reviews.length > 0 ? reviews[0].unitCode : "EXAMPLE101";
+
+  // Determine a representative unit code for the summary
+  // Safely access unit code only if reviews exist
+  const defaultUnitCode = reviews.length > 0 ? reviews[0].unitCode : "N/A";
 
 
   return (
@@ -37,7 +47,12 @@ export default async function Home() {
         {/* Review Display List */}
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold mb-4 text-center md:text-left">Recent Reviews</h2>
-           {reviews.length === 0 ? (
+           {fetchError ? (
+                <Alert variant="destructive">
+                    <AlertTitle>Error Loading Reviews</AlertTitle>
+                    <AlertDescription>{fetchError}</AlertDescription>
+                </Alert>
+            ) : reviews.length === 0 ? (
              <Alert>
                <AlertTitle>No Reviews Yet</AlertTitle>
                <AlertDescription>Be the first to submit a review!</AlertDescription>
@@ -51,3 +66,6 @@ export default async function Home() {
     </main>
   );
 }
+
+// Make sure Review type is imported or defined if not globally available
+import type { Review } from '@/types/review';
